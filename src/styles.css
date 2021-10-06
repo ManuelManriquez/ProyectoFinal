@@ -1,12 +1,18 @@
+.containerLogIn{
+min-height: 90vh;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+}
+
 .logIn{
-    height: 50em;
-    display: flex;
-    align-items: center;
-    justify-content: center
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 40px;
 }
 
 .inputLogIn{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
