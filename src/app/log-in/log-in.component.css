@@ -1,0 +1,136 @@
+
+.container{
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.containerLogIn{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 448px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkgrey;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.logInInput{
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logInTitle{
+    margin-top: 30px;
+    font-size: 30px;
+}
+
+#logIn2{
+    margin-top: 20px;
+    font-size: 27px;
+}
+
+#logInEmail, #logInPassword{
+    align-self: flex-start;
+    margin: 15px 0px;
+    font-size: 25px;
+}
+#logInInputEmail, #logInInputPassword{
+    align-self: flex-start;
+    padding: 10px;
+    width: 475px;
+    height: 30px;
+    font-size: 20px;
+}
+#buttonForgot{
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#buttonForgot, #buttonSignUp{
+    border-radius: 4px;
+    color: #1a73e8;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: .25px;
+    outline: 0;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: inherit;
+    text-align: left;
+    border: 0;
+}
+
+#logInBottomButtons{
+    margin-top: 15px;
+}
+
+#buttonSignUp{
+    margin-right: 150px;
+}
+
+#buttonLogIn{
+    margin-left: 150px;
+    background-color: #1a73e8;
+    border-color: transparent;  
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    letter-spacing: .25px;
+    font-size: inherit;
+    border-radius: 5px;
+}
+
+/*
+.bottomButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    padding-top: 15px;
+
+    margin-bottom: 80px;
+}
+
+
+
+#buttonForgot, #buttonSignUp{
+    border-radius: 4px;
+    color: #1a73e8;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: .25px;
+    outline: 0;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: inherit;
+    text-align: left;
+    border: 0;
+}
+
+#buttonLogIn{
+  background-color: #1a73e8;
+  border-color: transparent;  
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  letter-spacing: .25px;
+  font-size: inherit;
+  border-radius: 5px;
+}
+
+input{
+    width: 425px;
+    height: 100px;
+    margin: 0px;
+}
+
+
+*/
