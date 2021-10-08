@@ -8,6 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class GaleryComponent {
 
   lista:string[]=["pito","pija","verga","pichula", "ayuda", "aaaa"];
-
+  
   constructor() { }
 }
