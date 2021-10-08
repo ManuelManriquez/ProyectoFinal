@@ -1,0 +1,50 @@
+
+.header{
+height: 64px;
+
+background-color: darkgoldenrod;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.photos{
+flex: 15;
+
+background-color: crimson;
+}
+
+img{
+    margin: 10px;
+    width: 20vw;
+}
+
+.row{
+    margin: 15px 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    flex: 1;
+    
+    height: 100vh;
+    background-color: cadetblue;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebarUpload{
+    margin-top: 10px;
+}
+
+#sidebarUsers{
+    margin-top: 10px;
+}
+
+/* SIDEBAR END */

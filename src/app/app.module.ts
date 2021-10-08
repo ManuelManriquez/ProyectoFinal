@@ -3,14 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { GaleryComponent } from './galery/galery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent
+    LogInComponent,
+    GaleryComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
