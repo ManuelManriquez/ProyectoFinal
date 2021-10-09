@@ -1,4 +1,10 @@
-<div class="header">Proyecto papu</div>
+<!-- Prueba con perro stretchy -->
+
+<!-- <div class="header">
+    <span id="title">Proyecto Papu</span>
+    <span>los colores son por mientras jeje</span>
+    <input id="gallerySearch" type="text" placeholder="Search">
+</div>
 <div class="container">
     <div class="sidebar">
         <button id="sidebarUpload">Upload</button>
@@ -12,4 +18,24 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="header">
+  <button id="sidebarOptions" type="button" mat-button (click)="drawer.toggle()">
+    Options
+  </button>
+  <span id="title">Proyecto Papu</span>
+  <input id="gallerySearch" type="text" placeholder="Search" />
 </div>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button class="sidebarButtons" mat-raised-button>Option1</button>
+    <button class="sidebarButtons" mat-raised-button>Option2</button>
+    <button class="sidebarButtons" mat-raised-button>Option3</button>
+    <button class="sidebarButtons" mat-raised-button>Option4</button>
+  </mat-drawer>
+  <div class="example-sidenav-content">
+    <img *ngFor="let item of lista" src="https://img.ifunny.co/images/2dbe57dd7d4fcf7b501e0ea1d6bc9062d92cd3b44e324c64771616566b3cfc2d_1.webp" alt="">
+  </div>
+</mat-drawer-container>

@@ -7,15 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GaleryComponent } from './galery/galery.component';
 
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
-    GaleryComponent
+    GaleryComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatGridListModule,
+    MatSidenavModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
