@@ -4,6 +4,7 @@
   justify-content: space-between;
 
   height: 64px;
+  width: 100vw;
 
   background-color: darkgoldenrod;
 }
@@ -71,8 +72,6 @@ img {
 }
 
 .example-sidenav-content {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   height: 100%;
   align-items: flex-start;
