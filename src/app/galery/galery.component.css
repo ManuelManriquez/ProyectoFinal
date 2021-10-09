@@ -5,7 +5,9 @@
 
   height: 64px;
   width: 100vw;
-
+  position: sticky;
+  top: 0;
+  
   background-color: darkgoldenrod;
 }
 
@@ -19,65 +21,27 @@
   margin: 15px 20px;
 }
 
-/* .container {
-  display: flex;
-  flex-direction: row;
-}
-
-.photos {
-  flex: 15;
-
-  background-color: crimson;
-} */
-
 img {
   margin: 10px;
   width: 250px;
 }
 
-/* .row {
-  margin: 15px 10px;
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-/* SIDEBAR */
-
-.sidebar {
-  flex: 1;
-
-  height: 100vh;
-  background-color: cadetblue;
-
-  display: flex;
-  flex-direction: column;
-}
-
-/* #sidebarUpload {
-  margin: 10px;
-}
-
-#sidebarUsers {
-  margin: 10px;
-} */
-
-/* SIDEBAR END */
-
 .example-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100vw;
+  width: auto;
   height: 100vh;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .example-sidenav-content {
   flex-wrap: wrap;
-  height: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
   align-items: flex-start;
   justify-content: flex-start;
   background-color: crimson;
-
 }
 
 .example-sidenav {
@@ -86,11 +50,10 @@ img {
   align-content: center;
 }
 
-.sidebarButtons{
-margin: 14px 8px;
+.sidebarButtons {
+  margin: 14px 8px;
 }
 
-#sidebarOptions{
+#sidebarOptions {
   margin: 20px 10px;
 }
-
