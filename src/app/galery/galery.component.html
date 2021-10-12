@@ -1,20 +1,28 @@
-<!-- <div class="header">
-    sadsad
-</div> -->
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
+<div class="header">
   <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
+    <button
+      id="buttonMenu"
+      color="primary"
+      type="button"
+      mat-button
+      (click)="drawer.toggle()"
+    >
+      <img id="imageMenu" src="./assets/menu.png" alt="" />
     </button>
   </div>
+</div>
 
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
+    <div class="sidebarButtons">
+      <button class="sidebarButton" mat-raised-button>Pija</button>
+      <button class="sidebarButton" mat-raised-button>Pinga</button>
+      <button class="sidebarButton" mat-raised-button>Verga</button>
+      <button class="sidebarButton" mat-raised-button>Pichula</button>
+    </div>
+  </mat-drawer>
+
+  <div class="content">
+    <img *ngFor="let item of lista" src="./assets/perro.jpg" alt="aa" />
+  </div>
 </mat-drawer-container>
