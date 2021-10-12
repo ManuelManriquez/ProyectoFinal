@@ -24,5 +24,6 @@ export class GaleryComponent {
   // ];
   constructor() { }
   showFiller = false;
+
 }
 

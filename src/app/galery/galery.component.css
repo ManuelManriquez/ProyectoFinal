@@ -61,7 +61,6 @@ img {
 }
 
 .sidebarButtons{
-    margin-top: 58px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
