@@ -23,6 +23,6 @@ export class GaleryComponent {
   //   { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   // ];
   constructor() { }
-
+  showFiller = false;
 }
 

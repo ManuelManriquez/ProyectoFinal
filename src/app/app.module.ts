@@ -6,8 +6,6 @@ import { LogInComponent } from './log-in/log-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GaleryComponent } from './galery/galery.component';
-
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
@@ -19,9 +17,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatGridListModule,
     MatSidenavModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]

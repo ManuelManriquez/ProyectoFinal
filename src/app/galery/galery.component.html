@@ -1,62 +1,20 @@
-<!-- Prueba con perro stretchy -->
-
 <!-- <div class="header">
-    <span id="title">Proyecto Papu</span>
-    <span>los colores son por mientras jeje</span>
-    <input id="gallerySearch" type="text" placeholder="Search">
-</div>
-<div class="container">
-    <div class="sidebar">
-        <button id="sidebarUpload">Upload</button>
-        <button id="sidebarUsers">Users</button>
-    </div>
-
-    <div class="photos">
-        <div class="row">
-            <div *ngFor="let item of lista">
-                <img src="https://img.ifunny.co/images/2dbe57dd7d4fcf7b501e0ea1d6bc9062d92cd3b44e324c64771616566b3cfc2d_1.webp" alt="">
-            </div>
-        </div>
-    </div>
+    sadsad
 </div> -->
-
- <!-- <div class="header">
-  <button id="sidebarOptions" type="button" mat-button (click)="drawer.toggle()">
-    Options
-  </button>
-  <span id="title">Proyecto</span>
-  <input id="gallerySearch" type="text" placeholder="Search" />
-</div>
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <button class="sidebarButtons" mat-raised-button>Option1</button>
-    <button class="sidebarButtons" mat-raised-button>Option2</button>
-    <button class="sidebarButtons" mat-raised-button>Option3</button>
-    <button class="sidebarButtons" mat-raised-button>Option4</button>
-  </mat-drawer>
-  <div class="example-sidenav-content">
-    <img *ngFor="let item of lista" src="https://img.ifunny.co/images/2dbe57dd7d4fcf7b501e0ea1d6bc9062d92cd3b44e324c64771616566b3cfc2d_1.webp" alt="">
-  </div>
-</mat-drawer-container> -->
-
-
-<!-- <mat-drawer-container class="example-container" autosize>
-  <div class="header" id="myHeader">
-    <button id="sidebarOptions" type="button" mat-button (click)="drawer.toggle()">
-      Options
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
     </button>
-    <span id="title">Proyecto</span>
-    <input id="gallerySearch" type="text" placeholder="Search"/>
-  </div>
-  <mat-drawer #drawer class="example-sidenav" mode="over">
-    <button class="sidebarButtons" mat-raised-button>Option1</button>
-    <button class="sidebarButtons" mat-raised-button>Option2</button>
-    <button class="sidebarButtons" mat-raised-button>Option3</button>
-    <button class="sidebarButtons" mat-raised-button>Option4</button>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <img *ngFor="let item of lista" src="https://img.ifunny.co/images/2dbe57dd7d4fcf7b501e0ea1d6bc9062d92cd3b44e324c64771616566b3cfc2d_1.webp" alt="">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
   </div>
-</mat-drawer-container> -->
+
+</mat-drawer-container>
