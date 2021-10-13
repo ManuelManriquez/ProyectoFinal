@@ -7,35 +7,52 @@
       mat-button
       (click)="drawer.toggle(); showFiller = !showFiller"
     >
-      <img id="imageMenu" src="./assets/icons/menu.png" alt="" />
+      <ng-container *ngIf="!showFiller; else elseTemplate">
+        <img id="imageMenu" src="./assets/icons/menu.png" alt="" />
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img
+          id="imageMenu"
+          src="./assets/icons/menu-alt-left-regular-24.png"
+          alt=""
+        />
+      </ng-template>
     </button>
   </div>
 </div>
 
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="push">
-    <div class="sidebarButtons">
-      <button class="sidebarButton" mat-raised-button>Pija</button>
-      <button class="sidebarButton" mat-raised-button>Pinga</button>
-      <button class="sidebarButton" mat-raised-button>Verga</button>
-      <button class="sidebarButton" mat-raised-button>Pichula</button>
+  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
+    <div class="sidebarContainerButtons">
+      <div class="buttonAndText">
+        <button class="sidebarButtons" mat-raised-button>
+          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
+          <span class="spanSidebar">Upload</span>
+        </button>
+      </div>
     </div>
   </mat-drawer>
 
-<div class="container">
-  <div *ngIf="!showFiller" class="sidebar">
-    <button class="sidebarButton" mat-raised-button>P</button>
-        <button class="sidebarButton" mat-raised-button>P</button>
-        <button class="sidebarButton" mat-raised-button>V</button>
-        <button class="sidebarButton" mat-raised-button>P</button>
-  </div>
-  
+  <div class="container">
+      <div *ngIf="!showFiller" class="sidebar">
+        <button class="sidebarButtonsX" mat-raised-button>
+          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
+        </button>
+      </div>
+
+
     <div class="content">
       <div class="images">
-        <img (click)="openImageDialog(item)" id="images" *ngFor="let item of urlImages; let i = index" src={{item}} alt={{item[i]}} />
+        <img
+          (click)="openImageDialog(item)"
+          id="images"
+          *ngFor="let item of urlImages; let i = index"
+          src="{{ item }}"
+          alt="{{ item[i] }}"
+        />
       </div>
     </div>
-</div>
+  </div>
 </mat-drawer-container>
 
 <!-- 
