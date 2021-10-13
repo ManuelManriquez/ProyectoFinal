@@ -5,15 +5,15 @@
       color="primary"
       type="button"
       mat-button
-      (click)="drawer.toggle()"
+      (click)="drawer.toggle(); showFiller = !showFiller"
     >
-      <img id="imageMenu" src="./assets/menu.png" alt="" />
+      <img id="imageMenu" src="./assets/icons/menu.png" alt="" />
     </button>
   </div>
 </div>
 
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
+  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="push">
     <div class="sidebarButtons">
       <button class="sidebarButton" mat-raised-button>Pija</button>
       <button class="sidebarButton" mat-raised-button>Pinga</button>
@@ -22,7 +22,22 @@
     </div>
   </mat-drawer>
 
-  <div class="content">
-    <img *ngFor="let item of lista" src="./assets/perro.jpg" alt="aa" />
+<div class="container">
+  <div *ngIf="!showFiller" class="sidebar">
+    <button class="sidebarButton" mat-raised-button>P</button>
+        <button class="sidebarButton" mat-raised-button>P</button>
+        <button class="sidebarButton" mat-raised-button>V</button>
+        <button class="sidebarButton" mat-raised-button>P</button>
   </div>
+  
+    <div class="content">
+      <div class="images">
+        <img (click)="openImageDialog(item)" id="images" *ngFor="let item of urlImages; let i = index" src={{item}} alt={{item[i]}} />
+      </div>
+    </div>
+</div>
 </mat-drawer-container>
+
+<!-- 
+<p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button> -->

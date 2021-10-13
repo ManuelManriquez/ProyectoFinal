@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import {MatDialog} from '@angular/material/dialog';
+import { ModalImageComponent } from '../modal-image/modal-image.component';
 
 @Component({
   selector: 'app-galery',
@@ -15,15 +10,31 @@ export interface Tile {
 
 export class GaleryComponent {
 
-  lista: string[] = ["pito", "pija", "verga", "pichula", "ayuda", "aaaa", "pija", "verga", "pichula", "ayuda", "aaaa"];
   // tiles: Tile[] = [
   //   { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
   //   { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
   //   { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
   //   { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
   // ];
-  constructor() { }
-  showFiller = false;
+  constructor(public dialog: MatDialog) { }
+  openImageDialog(url:string) {
+    const dialogRef = this.dialog.open(ModalImageComponent, {data: {url: url}});
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  showFiller = false;
+  urlImages: string[] = ["./assets/images/perro.jpg",
+    "./assets/images/adios.jpeg",
+    "./assets/images/buenculo.jpg",
+    "./assets/images/cartadeamor.jpg",
+    "./assets/images/crimendeodio.jpg",
+    "./assets/images/doge.jpg",
+    "./assets/images/ke.jpg",
+    "./assets/images/koala.jpg",
+    "./assets/images/uwu.jpg"];
+    
 }
 
