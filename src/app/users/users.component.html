@@ -19,6 +19,9 @@
       </ng-template>
     </button>
   </div>
+  <button id="buttonHome">
+    <img id="imageHome" src="./assets/icons/home.png" alt="" />
+  </button>
 </div>
 
 <mat-drawer-container class="example-container" autosize>
@@ -34,29 +37,21 @@
   </mat-drawer>
 
   <div class="container">
-      <div *ngIf="!showFiller" class="sidebar">
-        <button class="sidebarButtonsX" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
-        </button>
-        <button class="sidebarButtonsX">
-          <img id="logoutButton" src="./assets/icons/logout.png"  alt="">
-        </button>
-        <button class="sidebarButtonsX" (click)="logOut()">
-          <img id="adminButton" src="./assets/icons/logout.png"  alt="">
-        </button>
-      </div>
-
+    <div *ngIf="!showFiller" class="sidebar">
+      <button class="sidebarButtonsX" mat-raised-button>
+        <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
+      </button>
+      <button class="sidebarButtonsX" (click)="logOut()">
+        <img id="logoutButton" src="./assets/icons/logout.png" alt="" />
+      </button>
+    </div>
 
     <div class="content">
-      <div class="images">
-        <img
-          (click)="openImageDialog(item)"
-          id="images"
-          *ngFor="let item of urlImages; let i = index"
-          src="{{ item }}"
-          alt="{{ item[i] }}"
-        />
-      </div>
+      <div class="images"></div>
     </div>
   </div>
 </mat-drawer-container>
+
+<!-- 
+  <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button> -->

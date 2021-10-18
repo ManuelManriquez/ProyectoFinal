@@ -6,9 +6,15 @@ import { LogInComponent } from './log-in/log-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GaleryComponent } from './galery/galery.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ModalImageComponent } from './modal-image/modal-image.component';
+import { UsersComponent } from './users/users.component';
+
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +22,21 @@ import { ModalImageComponent } from './modal-image/modal-image.component';
     LogInComponent,
     GaleryComponent,
     ModalImageComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatDialogModule
-    ],
+    MatDialogModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'login', component: LogInComponent },
+      { path: 'galery', component: GaleryComponent }
+    ]),
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,18 +1,20 @@
+<router-outlet></router-outlet>
 <div class="container">
     <div class="containerLogIn">
         <div class="logInInput">
             <span id="logInTitle">Proyecto Papu</span>
             <span id="logIn2">Log In</span>
             <span id="logInEmail">Email</span>
-            <input type="email" placeholder="Email" id="logInInputEmail">
+            <input type="email" placeholder="Email" id="logInInputEmail" [(ngModel)]="email">
             <span id="logInPassword">Password</span>
-            <input type="password" placeholder="Password" id="logInInputPassword">
+            <input type="password" placeholder="Password" id="logInInputPassword" [(ngModel)]="password">
             <button id="buttonForgot">Forgot your password?</button>
             <div id="logInBottomButtons">
                 <button id="buttonSignUp">Sign up</button>
-                <button id="buttonLogIn">Log In</button>
+                <button type="submit" id="buttonLogIn" (click)="Login()">Log In</button>
             </div>
         </div>
-
     </div>
 </div>
+
+

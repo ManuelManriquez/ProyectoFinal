@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-log-in',
@@ -7,6 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogInComponent {
 
-  constructor() { }
+  email = '';
+  password = '';
 
+
+  constructor(public authService: AuthService, private router: Router) {
+  }
+
+   Login() {
+      this.authService.login(this.email, this.password)
+  }
 }
