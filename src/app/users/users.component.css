@@ -45,29 +45,35 @@
   overflow-y: hidden;
 }
 
-.images{
+.cards{
   margin-top: 20px;
   margin-left: 85px;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 240px;
+  text-align: center;
+  padding: 5px;
 }
 
-#images {
-  width: 200px;
+#cards {
   margin: 0px 2px;
 }
-#images:hover {
-  width: 201px;
+#cards:hover {
+  width: auto;
 }
 
 #imageMenu:hover, #imageHome:hover {
 background-color: lightgrey;
 }
 
-#imageMenu, #imageHome {
+#imageMenu {
   height: 35px;
   width: auto;
 }
 
-#buttonMenu, #buttonHome{
+#buttonMenu{
   margin-left: 10px;
   background-color: transparent;
   border-color: transparent;
@@ -136,4 +142,42 @@ align-items: center ;
 .sideBarContainer{
   display: flex;
   flex-direction: column;
+}
+
+#logOut{
+  position: absolute;
+  bottom: 80px;
+}
+#logOutSide{
+  position: absolute;
+  bottom: 5px;
+}
+
+#imageHome{
+  width: 24px;
+}
+
+.card{
+  display: flex;
+  flex-direction: row;
+}
+
+#cardLeft{
+}
+
+#cardRight{
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  justify-content: space-around;
+}
+
+.userButtons{
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 5px;
+}
+
+.userButtons:hover{
+background-color: lightgrey;
 }

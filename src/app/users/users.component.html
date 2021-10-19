@@ -19,9 +19,6 @@
       </ng-template>
     </button>
   </div>
-  <button id="buttonHome">
-    <img id="imageHome" src="./assets/icons/home.png" alt="" />
-  </button>
 </div>
 
 <mat-drawer-container class="example-container" autosize>
@@ -29,8 +26,25 @@
     <div class="sidebarContainerButtons">
       <div class="buttonAndText">
         <button class="sidebarButtons" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
-          <span class="spanSidebar">Upload</span>
+          <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
+          <span class="spanSidebar">Add user</span>
+        </button>
+      </div>
+      <div class="buttonAndText">
+        <button class="sidebarButtons" mat-raised-button (click)="navGalery()">
+          <img id="uploadButton" src="./assets/icons/home.png" alt="" />
+          <span class="spanSidebar">Home</span>
+        </button>
+      </div>
+      <div class="buttonAndText">
+        <button
+          id="logOutSide"
+          class="sidebarButtons"
+          (click)="logOut()"
+          mat-raised-button
+        >
+          <img id="uploadButton" src="./assets/icons/logout.png" alt="" />
+          <span class="spanSidebar">Log out</span>
         </button>
       </div>
     </div>
@@ -39,19 +53,62 @@
   <div class="container">
     <div *ngIf="!showFiller" class="sidebar">
       <button class="sidebarButtonsX" mat-raised-button>
-        <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
+        <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
       </button>
-      <button class="sidebarButtonsX" (click)="logOut()">
+      <button id="buttonHome" class="sidebarButtonsX" (click)="navGalery()">
+        <img id="imageHome" src="./assets/icons/home.png" alt="" />
+      </button>
+      <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
         <img id="logoutButton" src="./assets/icons/logout.png" alt="" />
       </button>
     </div>
 
+    <div class="content" *ngFor="let item of usersArray">
+      <div class="cards">
+        <div>
+          <div id="containerCard">
+            <div class="card">
+              <div id="cardLeft">
+                <div>
+                  <span
+                    ><strong> First Name: </strong> {{ item.firstName }}</span
+                  >
+                </div>
+                <div>
+                  <span> <strong>Last Name: </strong> {{ item.lastName }}</span>
+                </div>
+                <div>
+                  <span> <strong>Email: </strong> {{ item.email }}</span>
+                </div>
+                <div>
+                  <span> <strong>Role: </strong> {{ item.role }}</span>
+                </div>
+                <div>
+                  <span>
+                    <strong>Status: </strong>
+                    <ng-container *ngIf="item.state; else elseTemplate">
+                      Enabled
+                    </ng-container>
+                    <ng-template #elseTemplate> Disabled </ng-template>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <strong>Last Update: </strong> {{ item.updatedAt }}</span
+                  >
+                </div>
+              </div>
+              <div id="cardRight">
+                <button class="userButtons" (click)="openEditDialog(item.uid, item.firstName, item.lastName, item.email, item.password, item.role)"> <img src="./assets/icons/editar.png" alt="" /></button>
+                <button class="userButtons" (click)="openConfirmDialog(item.uid, item.role)"> <img src="./assets/icons/borrar.png" alt="" /></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="content">
       <div class="images"></div>
     </div>
   </div>
 </mat-drawer-container>
-
-<!-- 
-  <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button> -->

@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   api = 'http://localhost:8080/api';
-  token: any;
-
-  public resultados: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -20,14 +17,18 @@ export class AuthService {
     this.http.post(this.api + '/auth/login', { email: email, password: password })
       .subscribe((resp: any) => {
         localStorage.setItem('auth_token', resp.token);
-      this.router.navigate(['/galery']);
+        this.nav('/galery');
       });
   }
 
   logout() {
     localStorage.removeItem('auth_token');
-    this.router.navigate(['/login']);
+    this.nav('/login');
 
+  }
+
+  nav(pathNav: string) {
+    this.router.navigate([pathNav]);
   }
 
   public get logInStatus(): boolean {

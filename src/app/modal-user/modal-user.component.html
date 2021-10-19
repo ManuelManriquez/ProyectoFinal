@@ -1,0 +1,24 @@
+<div>
+    <div>
+        <p>Edit User</p>
+    </div>
+    <div>
+        <span>First Name: </span>
+        <input type="text" value={{data.firstName}} #txtFirstName>
+        <span>Last Name: </span>
+        <input type="text" value={{data.lastName}} #txtLastName>
+    </div>
+    <div>
+        <span>Email: </span>
+        <input type="email" value={{data.email}} #txtEmail>
+        <span>Password: </span>
+        <input type="text" value={{data.password}} #txtPassword>
+    </div>
+    <div>
+        <span>Role: </span>
+        <input type="text" value={{data.role}} #txtRole>
+    </div>
+    <div>
+        <button (click)="editUser()">Edit</button>
+    </div>
+</div>

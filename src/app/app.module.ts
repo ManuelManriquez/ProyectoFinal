@@ -14,6 +14,8 @@ import { UsersComponent } from './users/users.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ModalUserComponent } from './modal-user/modal-user.component';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { FormsModule } from '@angular/forms';
     GaleryComponent,
     ModalImageComponent,
     UsersComponent,
+    ModalUserComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forRoot([
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LogInComponent },
-      { path: 'galery', component: GaleryComponent }
+      { path: 'galery', component: GaleryComponent },
+      { path: 'users', component: UsersComponent }
     ]),
     HttpClientModule,
   ],

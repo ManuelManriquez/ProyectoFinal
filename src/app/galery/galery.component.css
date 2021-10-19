@@ -133,3 +133,18 @@ align-items: center ;
   display: flex;
   flex-direction: column;
 }
+
+#logOut{
+  position: absolute;
+  bottom: 80px;
+}
+
+#logOutSide{
+  position: absolute;
+  bottom: 5px;
+}
+
+#headerTitle{
+margin-left: 20px;
+margin-top: 10px;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { AuthService } from '../services/auth.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-galery',
@@ -11,19 +12,17 @@ import { AuthService } from '../services/auth.service';
 
 export class GaleryComponent {
 
-  // tiles: Tile[] = [
-  //   { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-  //   { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-  //   { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-  //   { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
-  // ];
-  constructor(public dialog: MatDialog, private authService: AuthService) { }
+
+  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService) { }
+
   openImageDialog(url: string) {
     const dialogRef = this.dialog.open(ModalImageComponent, { data: { url: url } });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
+  }
+
+  navUsers() {
+    this.usersService.navUsers('/users');
   }
 
   logOut() {
@@ -33,7 +32,7 @@ export class GaleryComponent {
   showFiller = false;
   urlImages: string[] = ["./assets/images/perro.jpg",
     "./assets/images/adios.jpeg",
-    // "./assets/images/buenculo.jpg",
+    "./assets/images/buenculo.jpg",
     "./assets/images/cartadeamor.jpg",
     "./assets/images/crimendeodio.jpg",
     "./assets/images/doge.jpg",

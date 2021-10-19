@@ -18,6 +18,7 @@
         />
       </ng-template>
     </button>
+    <span id="headerTitle">Proyecto Final</span>
   </div>
 </div>
 
@@ -30,22 +31,38 @@
           <span class="spanSidebar">Upload</span>
         </button>
       </div>
+      <div class="buttonAndText">
+        <button class="sidebarButtons" (click)="navUsers()" mat-raised-button>
+          <img id="uploadButton" src="./assets/icons/settings.png" alt="" />
+          <span class="spanSidebar">Settings</span>
+        </button>
+      </div>
+      <div class="buttonAndText">
+        <button
+          id="logOutSide"
+          class="sidebarButtons"
+          (click)="logOut()"
+          mat-raised-button
+        >
+          <img id="uploadButton" src="./assets/icons/logout.png" alt="" />
+          <span class="spanSidebar">Log out</span>
+        </button>
+      </div>
     </div>
   </mat-drawer>
 
   <div class="container">
-      <div *ngIf="!showFiller" class="sidebar">
-        <button class="sidebarButtonsX" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
-        </button>
-        <button class="sidebarButtonsX">
-          <img id="logoutButton" src="./assets/icons/logout.png"  alt="">
-        </button>
-        <button class="sidebarButtonsX" (click)="logOut()">
-          <img id="adminButton" src="./assets/icons/logout.png"  alt="">
-        </button>
-      </div>
-
+    <div *ngIf="!showFiller" class="sidebar">
+      <button class="sidebarButtonsX" mat-raised-button>
+        <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
+      </button>
+      <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
+        <img id="adminButton" src="./assets/icons/settings.png" alt="" />
+      </button>
+      <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
+        <img id="logOutButton" src="./assets/icons/logout.png" alt="" />
+      </button>
+    </div>
 
     <div class="content">
       <div class="images">
