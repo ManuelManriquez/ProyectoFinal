@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -8,10 +8,11 @@ import { Users } from '../interfaces/users';
   providedIn: 'root'
 })
 export class UsersService {
-  apiPut = 'http://localhost:8080/api/users/';
-  apiGetAll = 'http://localhost:8080/api/users';
-  apiGet = 'http://localhost:8080/api/search/users/test';
-  
+  apiPost = 'https://www.manmanesp.com/api/users/'
+  apiPut = 'https://www.manmanesp.com/api/users/';
+  apiGetAll = 'https://www.manmanesp.com/api/users';
+  apiGet = 'http://www.manmanesp.com/api/search/users/test';
+
   public usersArray: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
@@ -31,6 +32,7 @@ export class UsersService {
   //     });
 
   // }
+
   getAllUsers() {
     this.http.get(this.apiGetAll)
       .subscribe((resp: any) => {
@@ -39,10 +41,18 @@ export class UsersService {
 
   }
 
-  putUser(user: Users){
+  putUser(user: Users) {
     console.log(user.uid);
-        
-    this.http.put(`http://localhost:8080/api/users/${user.uid}`,user)
+
+    this.http.put(`https://www.manmanesp.com/api/users/${user.uid}`, user)
+      .subscribe((resp: any) => {
+      });
+  }
+
+
+
+  postUser(user: Users) {
+    this.http.post(this.apiPost, user, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
       });
   }

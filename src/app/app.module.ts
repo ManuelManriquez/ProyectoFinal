@@ -16,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModalUserComponent } from './modal-user/modal-user.component';
 import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
-
+import { ModalAddUserComponent } from './modal-add-user/modal-add-user.component';
+import { AngularFileUploaderModule } from "angular-file-uploader";
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
     UsersComponent,
     ModalUserComponent,
     ModalConfirmComponent,
-  ],
+    ModalAddUserComponent,
+    UploadComponent,  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -38,9 +41,11 @@ import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LogInComponent },
       { path: 'galery', component: GaleryComponent },
-      { path: 'users', component: UsersComponent }
+      { path: 'users', component: UsersComponent },
+      { path: 'upload', component: UploadComponent }
     ]),
     HttpClientModule,
+    AngularFileUploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

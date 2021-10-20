@@ -54,7 +54,12 @@
   <div class="container">
     <div *ngIf="!showFiller" class="sidebar">
       <button class="sidebarButtonsX" mat-raised-button>
-        <img id="uploadButton" src="./assets/icons/upload.png" (click)="navUpload()" alt="" />
+        <img
+          id="uploadButton"
+          src="./assets/icons/upload.png"
+          (click)="navUpload()"
+          alt=""
+        />
       </button>
       <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
         <img id="adminButton" src="./assets/icons/settings.png" alt="" />
@@ -66,20 +71,28 @@
 
     <div class="content">
       <div class="images">
-        <!-- <img id="images" (click)="openImageDialog(item.fileName)" *ngFor="let item of filesArray" src="http://manmanesp.com/uploads/{{item.fileName}}" alt=""> -->
-        <span *ngFor="let item of filesArray; let i=index" [ngSwitch]="filesExt[i]">
-          <img *ngSwitchCase="'csv'" id="images" src="./assets/icons/csv.png" alt="">
-          <img *ngSwitchCase="'jpg'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'jpeg'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'png'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'xlsx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/xlsx.png" alt="">
-          <img *ngSwitchCase="'docx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/docx.png" alt="">
-          <img *ngSwitchCase="'pptx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/pptx.png" alt="">
-          <img *ngSwitchCase="'pdf'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/pdf.png" alt="">
-        <p *ngSwitchDefault>
-        
-        </p>
-        </span>
+        <!-- <angular-file-uploader [config]="afuConfig"> 
+        </angular-file-uploader> -->
+
+        <input
+          type="file"
+          class="file-input"
+          (change)="onFileSelected($event)"
+          #fileUpload multiple
+        />
+
+        <div class="file-upload">
+          {{ fileName || "No file uploaded yet." }}
+
+          <button
+            mat-mini-fab
+            color="primary"
+            class="upload-btn"
+            (click)="fileUpload"
+          >
+            <span>aaa</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

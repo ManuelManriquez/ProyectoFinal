@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Files } from '../interfaces/files';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { AuthService } from '../services/auth.service';
+import { FilesService } from '../services/files.service';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -10,10 +12,34 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./galery.component.css']
 })
 
+
 export class GaleryComponent {
 
+  get filesArray() {
+    return this.filesService.filesArray;
+  }
+  // getfilesExt(){
+  //   return this.filesService.filesExt;
+  // }
 
-  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService) { }
+  filesExt: any[] = [];
+
+  filesFileName:any[]=[]
+
+  files: Files =
+    {
+      _id: '',
+      fileName: '',
+      extension: '',
+    }
+
+  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, private filesService: FilesService) {
+    filesService.getFiles();
+        this.filesExt = this.filesArray.map(a => a.fileName);
+    for (let index = 0; index < this.filesExt.length; index++) {
+      this.filesExt[index] = this.filesExt[index].split('.').pop()!;      
+    }
+    }
 
   openImageDialog(url: string) {
     const dialogRef = this.dialog.open(ModalImageComponent, { data: { url: url } });
@@ -30,15 +56,10 @@ export class GaleryComponent {
   }
 
   showFiller = false;
-  urlImages: string[] = ["./assets/images/perro.jpg",
-    "./assets/images/adios.jpeg",
-    "./assets/images/buenculo.jpg",
-    "./assets/images/cartadeamor.jpg",
-    "./assets/images/crimendeodio.jpg",
-    "./assets/images/doge.jpg",
-    "./assets/images/ke.jpg",
-    "./assets/images/koala.jpg",
-    "./assets/images/uwu.jpg"];
+
+  navUpload() {
+    this.usersService.navUsers('/upload');
+  }
 
 }
 

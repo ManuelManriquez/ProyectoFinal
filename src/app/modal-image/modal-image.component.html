@@ -1,1 +1,12 @@
-<img id="modalImage" src={{data.url}} alt="">
+<div>
+  <div>
+    <button (click)="deleteImage()">Delete</button>
+  </div>
+  <div>
+    <img
+      id="modalImage"
+      src="https://manmanesp.com/uploads/{{ data.url }}"
+      alt=""
+    />
+  </div>
+</div>

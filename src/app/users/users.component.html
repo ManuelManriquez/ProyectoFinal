@@ -52,7 +52,7 @@
 
   <div class="container">
     <div *ngIf="!showFiller" class="sidebar">
-      <button class="sidebarButtonsX" mat-raised-button>
+      <button class="sidebarButtonsX"  (click)="openAddDialog()"  mat-raised-button>
         <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
       </button>
       <button id="buttonHome" class="sidebarButtonsX" (click)="navGalery()">
