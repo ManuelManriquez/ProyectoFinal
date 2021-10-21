@@ -18,7 +18,6 @@
         />
       </ng-template>
     </button>
-    <span id="headerTitle">Proyecto Final</span>
   </div>
 </div>
 
@@ -66,16 +65,15 @@
 
     <div class="content">
       <div class="images">
-        <!-- <img id="images" (click)="openImageDialog(item.fileName)" *ngFor="let item of filesArray" src="http://manmanesp.com/uploads/{{item.fileName}}" alt=""> -->
         <span *ngFor="let item of filesArray; let i=index" [ngSwitch]="filesExt[i]">
-          <img *ngSwitchCase="'csv'" id="images" src="./assets/icons/csv.png" alt="">
-          <img *ngSwitchCase="'jpg'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'jpeg'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'png'" id="images" (click)="openImageDialog(item.fileName)" src="http://manmanesp.com/uploads/{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'xlsx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/xlsx.png" alt="">
-          <img *ngSwitchCase="'docx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/docx.png" alt="">
-          <img *ngSwitchCase="'pptx'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/pptx.png" alt="">
-          <img *ngSwitchCase="'pdf'" id="images" (click)="openImageDialog(item.fileName)" src="./assets/icons/pdf.png" alt="">
+          <img *ngSwitchCase="'csv'" id="images" (click)="openFileDialog('./assets/icons/csv.png', item.filename, item.user, 0, 'csv')" src="./assets/icons/csv.png" alt="">
+          <img *ngSwitchCase="'jpg'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
+          <img *ngSwitchCase="'jpeg'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
+          <img *ngSwitchCase="'png'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
+          <img *ngSwitchCase="'xlsx'" id="images" (click)="openFileDialog('./assets/icons/xlsx.png',item.fileName, item.user, 0, 'xlsx')" src="./assets/icons/xlsx.png" alt="">
+          <img *ngSwitchCase="'docx'" id="images" (click)="openFileDialog('./assets/icons/docx.png',item.fileName, item.user, 0, 'docx')" src="./assets/icons/docx.png" alt="">
+          <img *ngSwitchCase="'pptx'" id="images" (click)="openFileDialog('./assets/icons/pptx.png',item.fileName, item.user, 0, 'pptx')" src="./assets/icons/pptx.png" alt="">
+          <img *ngSwitchCase="'pdf'" id="images" (click)="openFileDialog('./assets/icons/pdf.png',item.fileName, item.user, 0, 'pdf')" src="./assets/icons/pdf.png" alt="">
         <p *ngSwitchDefault>
         
         </p>

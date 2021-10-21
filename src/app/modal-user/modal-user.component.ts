@@ -36,4 +36,8 @@ export class ModalUserComponent {
     this.usersService.putUser(this.newUser);
     console.log(this.newUser);
   }
+
+  cancel(){
+    this.dialogRef.close();
+  }
 }

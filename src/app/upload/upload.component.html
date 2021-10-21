@@ -18,7 +18,6 @@
         />
       </ng-template>
     </button>
-    <span id="headerTitle">Proyecto Final</span>
   </div>
 </div>
 
@@ -26,9 +25,14 @@
   <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
     <div class="sidebarContainerButtons">
       <div class="buttonAndText">
-        <button class="sidebarButtons" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
-          <span class="spanSidebar">Upload</span>
+        <button class="sidebarButtons" mat-raised-button (click)="navGalery()">
+          <img
+            id="uploadButton"
+            src="./assets/icons/home.png"
+            
+            alt=""
+          />
+          <span class="spanSidebar">Home</span>
         </button>
       </div>
       <div class="buttonAndText">
@@ -53,10 +57,10 @@
 
   <div class="container">
     <div *ngIf="!showFiller" class="sidebar">
-      <button class="sidebarButtonsX" mat-raised-button>
+      <button class="sidebarButtonsX" mat-raised-button (click)="navGalery()">
         <img
           id="uploadButton"
-          src="./assets/icons/upload.png"
+          src="./assets/icons/home.png"
           (click)="navUpload()"
           alt=""
         />
@@ -71,27 +75,34 @@
 
     <div class="content">
       <div class="images">
-        <!-- <angular-file-uploader [config]="afuConfig"> 
-        </angular-file-uploader> -->
+        <div id="upload">
+          <label id="labelFiles" for="fileUpload">
+            <img src="./assets/icons/folders.png" alt="" />
+          </label>
+          <input
+            type="file"
+            class="file-input"
+            id="fileUpload"
+            (change)="onFileSelected($event)"
+            #fileUpload
+            multiple
+          />
 
-        <input
-          type="file"
-          class="file-input"
-          (change)="onFileSelected($event)"
-          #fileUpload multiple
-        />
+          <div class="file-upload">
+            {{ fileName || "No file uploaded yet." }}
 
-        <div class="file-upload">
-          {{ fileName || "No file uploaded yet." }}
-
-          <button
-            mat-mini-fab
-            color="primary"
-            class="upload-btn"
-            (click)="fileUpload"
-          >
-            <span>aaa</span>
-          </button>
+            <button
+              mat-mini-fab
+              color="primary"
+              class="upload-btn"
+              (click)="(fileUpload)"
+            >
+              <span id="spanUpload"> </span>
+              <label id="labelUpload" for="spanUpload"
+                ><img src="./assets/icons/uploadFile.png" alt=""
+              /></label>
+            </button>
+          </div>
         </div>
       </div>
     </div>

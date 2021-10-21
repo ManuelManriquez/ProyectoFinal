@@ -1,5 +1,6 @@
 export interface Files {
-    _id: string;
-    fileName: string;
-    extension: string;
+    _id?: string;
+    fileName?: string;
+    extension?: string;
+    user?: string;
 }

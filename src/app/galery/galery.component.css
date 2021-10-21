@@ -5,8 +5,8 @@
   display: flex;
   width: 100%;
   height: 48px;
-  border-bottom: solid 1px grey;
-  background-color: whitesmoke;
+  border-bottom: solid 1px #a0c4ff;
+  background-color: #a0c4ff;
 }
 
 .example-container {
@@ -29,12 +29,13 @@
   margin-top: 48px;
   display: flex;
   flex-direction: column;
+  background-color: #a0c4ff;
 }
 
 .example-sidenav {
   padding: 20px;
   border-color: transparent;
-  background-color: whitesmoke;
+  background-color: #a0c4ff;
 }
 
 .content {
@@ -45,14 +46,18 @@
   overflow-y: hidden;
 }
 
-.images{
+.images {
   margin-top: 20px;
   margin-left: 85px;
+  background-color: #fffffc;
 }
 
 #images {
   width: 200px;
-  margin: 0px 2px;
+  margin: 0px 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.46);
 }
 #images:hover {
   width: 201px;
@@ -61,6 +66,10 @@
 #imageMenu {
   height: 35px;
   width: auto;
+}
+#imageMenu:hover {
+background-color: #CAFFBF;
+border-radius: 10px;
 }
 
 #buttonMenu {
@@ -77,13 +86,13 @@
 
 .sidebarButtonsX {
   margin: 10px 0;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: transparent;
   border-color: transparent;
 }
 .sidebarButtonsX:hover {
   margin: 10px 0;
-  background-color: lightgrey;
+  background-color: #caffbf;
   border-color: transparent;
 }
 .sidebarButtons {
@@ -91,14 +100,14 @@
   flex-direction: row;
   align-items: center;
   margin: 10px 0;
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: transparent;
   border-color: transparent;
 }
 
 .sidebarButtons:hover {
   margin: 10px 0;
-  background-color: lightgrey;
+  background-color: #caffbf;
   border-color: transparent;
 }
 
@@ -116,35 +125,35 @@
   flex-direction: column;
   padding: 15px;
   margin-top: 48px;
-  background-color: whitesmoke;
+  background-color: #a0c4ff;
 }
 
-.buttonAndText{
-display: flex;
-flex-direction: row;
-align-items: center ;
+.buttonAndText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.spanSidebar{
+.spanSidebar {
   margin-left: 10px;
 }
 
-.sideBarContainer{
+.sideBarContainer {
   display: flex;
   flex-direction: column;
 }
 
-#logOut{
+#logOut {
   position: absolute;
   bottom: 80px;
 }
 
-#logOutSide{
+#logOutSide {
   position: absolute;
   bottom: 5px;
 }
 
-#headerTitle{
-margin-left: 20px;
-margin-top: 10px;
+#headerTitle {
+  margin-left: 20px;
+  margin-top: 10px;
 }

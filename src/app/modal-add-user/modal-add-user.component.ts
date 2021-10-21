@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Users } from '../interfaces/users';
 import { UsersService } from '../services/users.service';
 
@@ -13,7 +14,7 @@ export class ModalAddUserComponent {
   @ViewChild('txtEmail') txtEmail!: ElementRef<HTMLInputElement>;
   @ViewChild('txtPassword') txtPassword!: ElementRef<HTMLInputElement>;
   @ViewChild('txtRole') txtRole!: ElementRef<HTMLInputElement>;
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public dialogRef: MatDialogRef<ModalAddUserComponent>) { }
 
   newUser: Users = {
     firstName: '',
@@ -21,6 +22,10 @@ export class ModalAddUserComponent {
     email: '',
     role: '',
   };
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
 
   addUser() {
     this.newUser.firstName = this.txtFirstName.nativeElement.value;

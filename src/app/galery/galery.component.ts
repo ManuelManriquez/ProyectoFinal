@@ -18,13 +18,10 @@ export class GaleryComponent {
   get filesArray() {
     return this.filesService.filesArray;
   }
-  // getfilesExt(){
-  //   return this.filesService.filesExt;
-  // }
 
   filesExt: any[] = [];
 
-  filesFileName:any[]=[]
+  filesFileName: any[] = []
 
   files: Files =
     {
@@ -33,16 +30,24 @@ export class GaleryComponent {
       extension: '',
     }
 
-  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, private filesService: FilesService) {
-    filesService.getFiles();
-        this.filesExt = this.filesArray.map(a => a.fileName);
+  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, public filesService: FilesService) {
+    filesService.getFiles;
+    this.filesExt = this.filesArray.map(a => a.fileName);
     for (let index = 0; index < this.filesExt.length; index++) {
-      this.filesExt[index] = this.filesExt[index].split('.').pop()!;      
+      this.filesExt[index] = this.filesExt[index].split('.').pop()!;
     }
-    }
+    console.log(this.filesArray);
+    
+  }
 
-  openImageDialog(url: string) {
-    const dialogRef = this.dialog.open(ModalImageComponent, { data: { url: url } });
+  openImageDialog(url: string, user: string, type: number) {
+    const dialogRef = this.dialog.open(ModalImageComponent, { data: { url: url, user: user, type: type } });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openFileDialog(fileIconUrl: string, url: string, user: string, type: number, ext: string) {
+    const dialogRef = this.dialog.open(ModalImageComponent, { data: { fileIconUrl: fileIconUrl, url: url, user: user, type: type, ext: ext } });
     dialogRef.afterClosed().subscribe(result => {
     });
   }

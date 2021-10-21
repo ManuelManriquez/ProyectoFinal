@@ -33,23 +33,11 @@ export class UploadComponent {
     }
   }
 
-  // afuConfig = {
-  //   uploadAPI: {
-  //     url: "https://manmanesp.com/api/uploads/",
-  //   },
-  //   method: 'post',
-  //   headers: {
-  //     "x-token": localStorage.getItem('auth_token'),
-  //   },
-  //   body: {
-  //     fileName: 
-  //   }
-  // };
-
-
-
   navUsers() {
     this.usersService.navUsers('/users');
+  }
+  navGalery() {
+    this.usersService.navUsers('/galery');
   }
 
   logOut() {

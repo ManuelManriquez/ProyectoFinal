@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UsersService } from '../services/users.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,6 +12,7 @@ import { ModalAddUserComponent } from '../modal-add-user/modal-add-user.componen
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
+  @ViewChild('txtSearch') txtSearch!: ElementRef<HTMLInputElement>;
 
   get usersArray() {
     return this.usersService.usersArray;
@@ -46,6 +47,14 @@ export class UsersComponent {
 
   addUser(){
     this.authService.nav('/addUser')
+  }
+
+  searchUser(){
+    if (this.txtSearch.nativeElement.value.length==0) {
+      this.usersService.getAllUsers();
+    }else{
+      this.usersService.getSearchUser(this.txtSearch.nativeElement.value)
+    }
   }
 
   showFiller = false;

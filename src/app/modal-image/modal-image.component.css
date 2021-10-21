@@ -1,3 +1,23 @@
-#modalImage{
-    max-height: 90vh;
+#modalImage {
+height: 70vh;
+  padding-left: 200px;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.rightSide {
+
+}
+
+#buttonModalImage {
+  margin: 0px 10px;
 }

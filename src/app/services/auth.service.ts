@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UsersService } from './users.service';
+import { FilesService } from './files.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +10,16 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-  api = 'https://www.manmanesp.com/api';
+  public pathApi: string = 'https://manmanesp.com';
 
-  constructor(private http: HttpClient, private router: Router) {
+  auth = '/api/auth/login';
+
+  constructor(private http: HttpClient, private router: Router, filesService: FilesService) {
+  filesService.getFiles();
   }
 
   login(email: string, password: string) {
-    this.http.post(this.api + '/auth/login', { email: email, password: password })
+    this.http.post(this.pathApi + this.auth,  { email: email, password: password })
       .subscribe((resp: any) => {
         localStorage.setItem('auth_token', resp.token);
         this.nav('/galery');

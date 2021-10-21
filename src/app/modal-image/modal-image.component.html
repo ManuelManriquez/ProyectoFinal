@@ -1,12 +1,32 @@
-<div>
-  <div>
-    <button (click)="deleteImage()">Delete</button>
+<div id="container">
+  <div class="leftSide">
+    <a
+      id="buttonModalImage"
+      [href]="'https://www.manmanesp.com/api/uploads/' + data.url"
+      download
+      (click)="saveImage()"
+      ><img src="./assets/icons/save.png" alt=""
+    /></a>
+    <a *ngIf="validated" id="buttonModalImage" (click)="deleteImage()"
+      ><img src="./assets/icons/delete.png" alt=""
+    /></a>
   </div>
-  <div>
-    <img
-      id="modalImage"
-      src="https://manmanesp.com/uploads/{{ data.url }}"
-      alt=""
-    />
+  <div class="rightSide">
+    <div>
+      <div>
+        <ng-container *ngIf="data.type == 0; else elseTemplate">
+          <img src="./assets/icons/{{ data.ext }}.png" alt="" />
+        </ng-container>
+        <ng-template #elseTemplate>
+          <img
+            id="modalImage"
+            src="{{ filesService.pathApi }}{{ filesService.getFile }}{{
+              data.url
+            }}"
+            alt=""
+          />
+        </ng-template>
+      </div>
+    </div>
   </div>
 </div>

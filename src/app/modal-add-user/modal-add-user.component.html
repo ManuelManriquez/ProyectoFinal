@@ -1,24 +1,29 @@
-<div>
-    <div>
-        <p>Edit User</p>
+<div id="modalEdit">
+    <div >
+        <div id="modalHeader">
+            <p><strong>Edit User</strong> </p>
+            <hr id="hr">
+        </div>
+        <div>
+            <p class="modalLabel">First Name: </p>
+            <input class="modalInput" type="text">
+            <p class="modalLabel">Last Name: </p>
+            <input class="modalInput" type="text">
+        </div>
+        <div>
+            <p class="modalLabel">Email: </p>
+            <input class="modalInput" type="text">
+            <p class="modalLabel">Password: </p>
+            <input class="modalInput" type="text">
+        </div>
+        <div>
+            <p class="modalLabel">Role: </p>
+            <input class="modalInput" type="text">
+        </div>
+        
     </div>
-    <div>
-        <span>First Name: </span>
-        <input type="text" #txtFirstName>
-        <span>Last Name: </span>
-        <input type="text" #txtLastName>
-    </div>
-    <div>
-        <span>Email: </span>
-        <input type="email" #txtEmail>
-        <span>Password: </span>
-        <input type="text" #txtPassword>
-    </div>
-    <div>
-        <span>Role: </span>
-        <input type="text" #txtRole>
-    </div>
-    <div>
-        <button (click)="addUser()">Edit</button>
+    <div class="modalButtons">
+        <button id="modalButton" (click)="cancel()">Cancel</button>
+        <button id="modalButton" (click)="addUser()">Add</button>
     </div>
 </div>

@@ -8,39 +8,39 @@ import { Files } from '../interfaces/files';
 })
 export class FilesService {
 
-  api = 'https://www.manmanesp.com/api/uploads/';
-  apiTest = 'https://localhost:8080/api/uploads/';
+  public pathApi: string = 'https://manmanesp.com';
+  public getFilesApi = '/api/uploads/';
+  public getFile = '/uploads/';
+
 
   public filesArray: any[] = [];
-  // public filesExt: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
     this.getFiles();
-    // this.filesExt = this.filesArray.map(a => a.fileName);
-    // for (let index = 0; index < this.filesExt.length; index++) {
-    //   this.filesExt[index] = this.filesExt[index].split('.').pop()!;      
-    // }
    }
 
-   
+
   postFile(file: FormData){
-    this.http.post(this.api, file, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+    this.http.post(this.pathApi+this.getFilesApi, file, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()!}})
     .subscribe((resp: any) => {
     });
   }
   getFiles(){
-    this.http.get(this.api)
+    this.http.get(this.pathApi+this.getFilesApi)
     .subscribe((resp: any) => {
-      this.filesArray = resp.files;            
+      this.filesArray = resp.files;
     });
     
   }
 
   delFiles(url: String){
-    this.http.delete(this.api+url, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+    this.http.delete(this.pathApi+this.getFilesApi+url, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
       });
   }
 
+  navFiles(navPath: string){
+    this.router.navigate([navPath]);
+  }
 
 }

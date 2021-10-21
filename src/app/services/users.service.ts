@@ -11,8 +11,7 @@ export class UsersService {
   apiPost = 'https://www.manmanesp.com/api/users/'
   apiPut = 'https://www.manmanesp.com/api/users/';
   apiGetAll = 'https://www.manmanesp.com/api/users';
-  apiGet = 'http://www.manmanesp.com/api/search/users/test';
-
+  apiGetSearch = 'https://manmanesp.com/api/search/users/';
   public usersArray: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
@@ -24,14 +23,6 @@ export class UsersService {
   navUsers(navPath: string): any {
     this.router.navigate([navPath]);
   }
-
-  // getUsers() {
-  //   this.http.get(this.apiGet, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
-  //     .subscribe((resp: any) => {
-  //       this.usersArray = resp;        
-  //     });
-
-  // }
 
   getAllUsers() {
     this.http.get(this.apiGetAll)
@@ -54,6 +45,13 @@ export class UsersService {
   postUser(user: Users) {
     this.http.post(this.apiPost, user, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
+      });
+  }
+
+  getSearchUser(query: String) {
+    this.http.get(this.apiGetSearch + query, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+      .subscribe((resp: any) => {
+        this.usersArray =resp.results;
       });
   }
 }
