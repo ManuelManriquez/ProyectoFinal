@@ -1,88 +1,118 @@
-<div class="mainContainer">
+<div
+  class="mainContainer"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
   <div class="header">
     <div class="example-sidenav-content">
-      <button
-      id="buttonMenu"
-      color="primary"
-      type="button"
-      mat-button
-    >
+      <button id="buttonMenu" color="primary" type="button" mat-button>
         <img id="imageMenu" src="./assets/icons/info.png" alt="" />
-        
-    </button>
+      </button>
     </div>
   </div>
-  
-<div>
 
-
-  <div class="container">
-    <div *ngIf="!showFiller" class="sidebar">
-      <button class="sidebarButtonsX" mat-raised-button>
-        <img
-          id="uploadButton"
-          src="./assets/icons/upload.png"
-          (click)="navUpload()"
-          alt=""
-        />
-      </button>
-      <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
-        <img id="adminButton" src="./assets/icons/settings.png" alt="" />
-      </button>
-      <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
-        <img id="logOutButton" src="./assets/icons/logout.png" alt="" />
-      </button>
-    </div>
-
-    <div class="main">
-      <div class="content">
-        <div class="row">
-          <div class="cards">
-            <div class="card" *ngFor="let item of filesArray; let i; index">
-              <div id="divImages">
-                <div id="divImage">
+  <div>
+    <div class="container">
+      <div class="sidebar">
+        <button class="sidebarButtonsX" mat-raised-button>
+          <img
+            id="uploadButton"
+            src="./assets/icons/upload.png"
+            (click)="navUpload()"
+            alt=""
+          />
+        </button>
+        <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
+          <img id="adminButton" src="./assets/icons/settings.png" alt="" />
+        </button>
+        <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
+          <img id="logOutButton" src="./assets/icons/logout.png" alt="" />
+        </button>
+      </div>
+      <div class="main">
+        <div class="content">
+          <div class="row">
+            <div class="cards">
+              <div class="card" *ngFor="let item of filesArray; let i; index">
+                <span [ngSwitch]="item.extension">
+                  <div *ngSwitchCase="'pdf'">
+                    <a
+                      class="documentIcon"
+                      [href]="
+                        'https://manmanesp.com/api/uploads/' + item.fileName
+                      "
+                      target="_blank"
+                      [download]
+                    >
+                      <img src="./assets/images/pdf.png"
+                    /></a>
+                    <div>
+                      <p id="docFileName">{{ item.fileName }}</p>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'csv'">
+                    <a
+                      class="documentIcon"
+                      [href]="
+                        'https://manmanesp.com/api/uploads/' + item.fileName
+                      "
+                      target="_blank"
+                      [download]
+                    >
+                      <img src="./assets/images/csv.png"
+                    /></a>
+                    <div>
+                      <p id="docFileName">{{ item.fileName }}</p>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'docx'">
+                    <a
+                      class="documentIcon"
+                      [href]="
+                        'https://manmanesp.com/api/uploads/' + item.fileName
+                      "
+                      target="_blank"
+                      [download]
+                    >
+                      <img src="./assets/images/docx.png"
+                    /></a>
+                    <div>
+                      <p id="docFileName">{{ item.fileName }}</p>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="'xslx'">
+                    <a
+                      class="documentIcon"
+                      [href]="
+                        'https://manmanesp.com/api/uploads/' + item.fileName
+                      "
+                      target="_blank"
+                      [download]
+                    >
+                      <img src="./assets/images/xslx.png"
+                    /></a>
+                    <div>
+                      <p id="docFileName">{{ item.fileName }}</p>
+                    </div>
+                  </div>
                   <img
-                    id="images"
+                    class="imagesIcon"
                     src="{{ filesService.pathApi }}{{ filesService.getFile }}{{
                       item.fileName
                     }}"
                     alt=""
                     (click)="openImageDialog(item.fileName, item.user, 1)"
                   />
-                </div>
-                <div id="divText">
-                  <p>{{ item.fileName }}</p>
-                </div>
-                <div>
-                  <a [href]="'https://manmanesp.com/uploads/'+item.fileName" download>Download</a>
-                </div>
+                </span>
+                <div id="divText"></div>
+                <div id="bottomAnchor"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-  
   </div>
 </div>
-  
-</div>
-
-  <!-- <div class="content">
-      <div class="images">
-        <span *ngFor="let item of filesArray; let i=index" [ngSwitch]="filesExt[i]">
-          <img *ngSwitchCase="'csv'" id="images" (click)="openFileDialog('./assets/icons/csv.png', item.filename, item.user, 0, 'csv')" src="./assets/icons/csv.png" alt="">
-          <img *ngSwitchCase="'jpg'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'jpeg'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'png'" id="images" (click)="openImageDialog(item.fileName, item.user, 1)" src="{{filesService.pathApi}}{{filesService.getFile}}{{item.fileName}}" alt="">
-          <img *ngSwitchCase="'xlsx'" id="images" (click)="openFileDialog('./assets/icons/xlsx.png',item.fileName, item.user, 0, 'xlsx')" src="./assets/icons/xlsx.png" alt="">
-          <img *ngSwitchCase="'docx'" id="images" (click)="openFileDialog('./assets/icons/docx.png',item.fileName, item.user, 0, 'docx')" src="./assets/icons/docx.png" alt="">
-          <img *ngSwitchCase="'pptx'" id="images" (click)="openFileDialog('./assets/icons/pptx.png',item.fileName, item.user, 0, 'pptx')" src="./assets/icons/pptx.png" alt="">
-          <img *ngSwitchCase="'pdf'" id="images" (click)="openFileDialog('./assets/icons/pdf.png',item.fileName, item.user, 0, 'pdf')" src="./assets/icons/pdf.png" alt="">
-        <p *ngSwitchDefault>
-        
-        </p> 
-        </span>
-      </div>
-    </div> -->

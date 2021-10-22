@@ -1,17 +1,18 @@
-<router-outlet></router-outlet>
-<div *ngIf="login" class="container">
+<div class="container">
     <div class="containerLogIn">
         <div class="logInInput">
             <span id="logInTitle">Final Project</span>
-            <span id="logIn2">Log In</span>
+            <span id="logIn2">Sign Up</span>
+            <span id="logInEmail">First Name</span>
+            <input type="" placeholder="First Name" id="logInInputEmail" [(ngModel)]="firstName">
+            <span id="logInEmail">Last Name</span>
+            <input type="email" placeholder="Last Name" id="logInInputEmail" [(ngModel)]="lastName">
             <span id="logInEmail">Email</span>
             <input type="email" placeholder="Email" id="logInInputEmail" [(ngModel)]="email">
             <span id="logInPassword">Password</span>
             <input type="password" placeholder="Password" id="logInInputPassword" [(ngModel)]="password">
-            <button id="buttonForgot">Forgot your password?</button>
             <div id="logInBottomButtons">
-                <button id="buttonSignUp" (click)="navRegister()">Sign up</button>
-                <button type="submit" id="buttonLogIn" (click)="Login()">Log In</button>
+                <button type="submit" id="buttonLogIn" (click)="register()">Register</button>
             </div>
         </div>
     </div>

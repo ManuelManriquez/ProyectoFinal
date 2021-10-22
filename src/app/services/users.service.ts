@@ -40,8 +40,10 @@ export class UsersService {
 
   }
 
-  deleteUser(){
-
+  deleteUser(user: Users){
+    this.http.delete(`https://www.manmanesp.com/api/users/${user.uid}`)
+      .subscribe((resp: any) => {
+      });
   }
 
   putUser(user: Users) {

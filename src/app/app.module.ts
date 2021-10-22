@@ -19,6 +19,9 @@ import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
 import { ModalAddUserComponent } from './modal-add-user/modal-add-user.component';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { UploadComponent } from './upload/upload.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ModalConfirmUploadComponent } from './modal-confirm-upload/modal-confirm-upload.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { UploadComponent } from './upload/upload.component';
     ModalUserComponent,
     ModalConfirmComponent,
     ModalAddUserComponent,
-    UploadComponent,  ],
+    UploadComponent,
+    ModalConfirmUploadComponent,
+    RegisterComponent,  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,13 +44,15 @@ import { UploadComponent } from './upload/upload.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent },
       { path: 'login', component: LogInComponent },
       { path: 'galery', component: GaleryComponent },
       { path: 'users', component: UsersComponent },
-      { path: 'upload', component: UploadComponent }
+      { path: 'upload', component: UploadComponent },
     ]),
     HttpClientModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

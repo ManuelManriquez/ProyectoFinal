@@ -17,15 +17,20 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 })
 
 
+
 export class GaleryComponent {
 
   token: string = localStorage.getItem('auth_token')!;
   decoded: Users = jwt_decode(this.token);
   validated: boolean = false;
 
+  to: number = 0;
+  limit: number = 15;
+
   get filesArray() {
-    return this.filesService.filesArray;
+        return this.filesService.filesArray;
   }
+
   get filesExtArray() {
     return this.filesService.filesExtArray;
   }
@@ -34,22 +39,7 @@ export class GaleryComponent {
     return this.usersService.usersArray;
   }
 
-
-  filesExt: any[] = [];
-
-  usersArrayRole: any[] = [];
-
-  filesFileName: any[] = []
-
   constructor(private http: HttpClient, public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, public filesService: FilesService) {
-    console.log(filesService.getFiles());
-    filesService.getFiles;
-    this.filesExt = this.filesArray.map(a => a.fileName);
-    for (let index = 0; index < this.filesExt.length; index++) {
-      this.filesExt[index] = this.filesExt[index].split('.').pop()!;
-    }
-    console.log(this.filesExt);
-    
   }
 
   openImageDialog(url: string, user: string, type: number) {
@@ -72,10 +62,14 @@ export class GaleryComponent {
     this.authService.logout();
   }
 
-  showFiller = false;
-
   navUpload() {
     this.usersService.navUsers('/upload');
+  }
+
+  onScroll() {
+    console.log('scrolled!!');
+    this.limit = this.limit+5;
+    this.filesService.getMoreFiles(this.limit, this.to);
   }
 
 }

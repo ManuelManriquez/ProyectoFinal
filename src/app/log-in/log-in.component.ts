@@ -13,11 +13,16 @@ export class LogInComponent {
   email = '';
   password = '';
 
+  login: boolean = true;
 
   constructor(public authService: AuthService, private router: Router) {
   }
 
-   Login() {
-      this.authService.login(this.email, this.password)
+  Login() {
+    this.authService.login(this.email, this.password)
+  }
+
+  navRegister() {
+    this.router.navigate(['/register']);
   }
 }

@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { FilesService } from '../services/files.service';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
+import { ModalConfirmUploadComponent } from '../modal-confirm-upload/modal-confirm-upload.component';
 
 @Component({
   selector: 'app-upload',
@@ -15,7 +18,7 @@ export class UploadComponent {
 
   fileName = '';
 
-  constructor(private usersService: UsersService, private filesService: FilesService, private authService: AuthService, private http: HttpClient) { }
+  constructor(public dialog: MatDialog, private usersService: UsersService, private filesService: FilesService, private authService: AuthService, private http: HttpClient) { }
 
   onFileSelected(event: any) {
 
@@ -45,6 +48,12 @@ export class UploadComponent {
   }
 
   showFiller = false;
+
+openConfirmDialog(){
+  const dialogRef = this.dialog.open(ModalConfirmUploadComponent);
+  dialogRef.afterClosed().subscribe(result => {
+  });
+}
 
   navUpload() {
     this.usersService.navUsers('/upload');

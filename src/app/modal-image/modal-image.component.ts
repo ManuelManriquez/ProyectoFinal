@@ -29,6 +29,8 @@ fileVal: Users ={
 
   deleteImage() {
     this.filesService.delFiles(this.data.url);
+    this.dialogRef.close();
+    window.location.reload();
   }
 
   saveImage(){

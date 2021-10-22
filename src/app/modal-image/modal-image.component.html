@@ -1,8 +1,8 @@
 <div id="container">
   <div>
     <div id="buttonBar">
-      <button><img src="./assets/icons/save.png" alt=""></button>
-      <button *ngIf="validated" (click)="deleteImage()" ><img src="./assets/icons/delete.png" alt=""></button>
+      <a id="buttons" [href]="'https://manmanesp.com/api/uploads/'+data.url" download> <img src="./assets/icons/save.png"  alt=""></a>
+      <button id="buttons" (click)="deleteImage()" dowload> <img src="./assets/icons/delete.png"  alt=""></button>
     </div>
     <div>
       <ng-container *ngIf="data.type == 0; else elseTemplate">
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>
+

@@ -215,8 +215,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  background-color: transparent;
-  padding: 10px;
+  background-color:transparent;
   margin: 20px 20px;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.46);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.46);
@@ -224,32 +223,26 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 15px;
 }
-.main {
-  background-color: #FFFFFC;
-  width: 100vw;
-  overflow-y: hidden;
-  height: 100vh;
-}
 
-#images{
-  width: 210px;
-  background-color: transparent;
-}
-
-#divImage{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-#divText{
-  margin-top: 15px;
- text-align: center;
-}
 .main{
 width: auto;
 height: auto;
+}
+
+#docFileName{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 13px;
+  text-align: center;
+  width: 254px;
+  word-wrap: break-word;
+}
+
+.documentIcon{
+
+}
+
+.imagesIcon{
+  max-height: 250px;
 }
 
 @media (max-width: 360px) { 

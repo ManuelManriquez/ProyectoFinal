@@ -3,5 +3,4 @@ export interface Files {
     fileName?: string;
     extension?: string;
     user?: string;
-    ext?: string;
 }

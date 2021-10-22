@@ -15,7 +15,6 @@ export class AuthService {
   auth = '/api/auth/login';
 
   constructor(private http: HttpClient, private router: Router, filesService: FilesService) {
-  filesService.getFiles();
   }
 
   login(email: string, password: string) {
