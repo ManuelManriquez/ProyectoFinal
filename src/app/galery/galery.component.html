@@ -2,7 +2,6 @@
   class="mainContainer"
   infiniteScroll
   [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
   <div class="header">
@@ -24,7 +23,7 @@
             alt=""
           />
         </button>
-        <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
+        <button *ngIf="validatedUser" id="admin" class="sidebarButtonsX" (click)="navUsers()">
           <img id="adminButton" src="./assets/icons/settings.png" alt="" />
         </button>
         <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
@@ -37,7 +36,7 @@
             <div class="cards">
               <div class="card" *ngFor="let item of filesArray; let i; index">
                 <span [ngSwitch]="item.extension">
-                  <div *ngSwitchCase="'pdf'">
+                  <div class="divCardDoc" *ngSwitchCase="'pdf'">
                     <a
                       class="documentIcon"
                       [href]="
@@ -46,13 +45,16 @@
                       target="_blank"
                       [download]
                     >
-                      <img src="./assets/images/pdf.png"
+                      <img id="docImage" src="./assets/images/pdf.png"
                     /></a>
                     <div>
                       <p id="docFileName">{{ item.fileName }}</p>
                     </div>
+                    <div>
+                      <button *ngIf="validated" id="docButtonDelete" (click)="delete(item.fileName)"><img src="./assets/icons/delete.png" alt=""></button>
+                    </div>
                   </div>
-                  <div *ngSwitchCase="'csv'">
+                  <div class="divCardDoc" *ngSwitchCase="'csv'">
                     <a
                       class="documentIcon"
                       [href]="
@@ -61,13 +63,16 @@
                       target="_blank"
                       [download]
                     >
-                      <img src="./assets/images/csv.png"
+                      <img id="docImage" src="./assets/images/csv.png"
                     /></a>
                     <div>
                       <p id="docFileName">{{ item.fileName }}</p>
                     </div>
+                    <div>
+                      <button *ngIf="validated" id="docButtonDelete" (click)="delete(item.fileName)"><img src="./assets/icons/delete.png" alt=""></button>
+                    </div>
                   </div>
-                  <div *ngSwitchCase="'docx'">
+                  <div class="divCardDoc" *ngSwitchCase="'docx'">
                     <a
                       class="documentIcon"
                       [href]="
@@ -76,13 +81,16 @@
                       target="_blank"
                       [download]
                     >
-                      <img src="./assets/images/docx.png"
+                      <img id="docImage" src="./assets/images/docx.png"
                     /></a>
                     <div>
                       <p id="docFileName">{{ item.fileName }}</p>
                     </div>
+                    <div>
+                      <button *ngIf="validated" id="docButtonDelete" (click)="delete(item.fileName)"><img src="./assets/icons/delete.png" alt=""></button>
+                    </div>
                   </div>
-                  <div *ngSwitchCase="'xslx'">
+                  <div class="divCardDoc" *ngSwitchCase="'xlsx'">
                     <a
                       class="documentIcon"
                       [href]="
@@ -91,10 +99,13 @@
                       target="_blank"
                       [download]
                     >
-                      <img src="./assets/images/xslx.png"
+                      <img id="docImage" src="./assets/images/xlsx.png"
                     /></a>
                     <div>
                       <p id="docFileName">{{ item.fileName }}</p>
+                    </div>
+                    <div>
+                      <button *ngIf="validated" id="docButtonDelete" (click)="delete(item.fileName)"><img src="./assets/icons/delete.png" alt=""></button>
                     </div>
                   </div>
                   <img

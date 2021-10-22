@@ -12,6 +12,10 @@ import { ModalAddUserComponent } from '../modal-add-user/modal-add-user.componen
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent {
+
+  to: number = 0;
+  limit: number = 20;
+
   @ViewChild('txtSearch') txtSearch!: ElementRef<HTMLInputElement>;
 
   get usersArray() {
@@ -19,7 +23,7 @@ export class UsersComponent {
   }
 
   constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService) { 
-    usersService.getAllUsers(); 
+    usersService.getUsers(); 
   }
 
   openAddDialog() {
@@ -52,10 +56,16 @@ export class UsersComponent {
 
   searchUser(){
     if (this.txtSearch.nativeElement.value.length==0) {
-      this.usersService.getAllUsers();
+      this.usersService.getUsers();
     }else{
       this.usersService.getSearchUser(this.txtSearch.nativeElement.value)
     }
+  }
+  onScroll() {
+    this.limit = this.limit + 10;
+    this.usersService.getMoreUsers(this.limit, this.to);
+    console.log('scrolled');
+    
   }
 
   showFiller = false;

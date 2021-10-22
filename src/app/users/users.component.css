@@ -230,9 +230,8 @@
 }
 .main {
   background-color: #FFFFFC;
-  width: 100vw;
-  overflow-y: hidden;
-  height: 100vh;
+  width: auto;
+  height: auto;
 }
 
 #hr{

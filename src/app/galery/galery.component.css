@@ -216,6 +216,7 @@
   display: flex;
   flex-direction: column;
   background-color:transparent;
+  background-color: #FFADAD;
   margin: 20px 20px;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.46);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.46);
@@ -237,8 +238,21 @@ height: auto;
   word-wrap: break-word;
 }
 
-.documentIcon{
+.divCardDoc{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.documentIcon{
+  margin-top: 20px;
+  margin-right: 40px;
+  width: 30px;
+  align-items: center;
+}
+
+#docImage{
+  width: 64px;
 }
 
 .imagesIcon{
@@ -247,11 +261,10 @@ height: auto;
 
 @media (max-width: 360px) { 
   .card{
-    margin-left: -10px;
     width: 70vw;
   }
   #images{
-    width: 70vw;
+    width: 10vw;
   }
   #divText{
     font-size: 12px;

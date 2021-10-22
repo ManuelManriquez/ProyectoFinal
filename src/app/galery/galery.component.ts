@@ -23,23 +23,21 @@ export class GaleryComponent {
   token: string = localStorage.getItem('auth_token')!;
   decoded: Users = jwt_decode(this.token);
   validated: boolean = false;
+  validatedUser: boolean = false;
 
   to: number = 0;
   limit: number = 15;
 
   get filesArray() {
-        return this.filesService.filesArray;
+    return this.filesService.filesArray;
   }
 
-  get filesExtArray() {
-    return this.filesService.filesExtArray;
-  }
-
-  get usersArray() {
-    return this.usersService.usersArray;
+  get actualUser() {
+    return this.authService.actualUser;
   }
 
   constructor(private http: HttpClient, public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, public filesService: FilesService) {
+    this.verifyAdminRole();
   }
 
   openImageDialog(url: string, user: string, type: number) {
@@ -67,10 +65,23 @@ export class GaleryComponent {
   }
 
   onScroll() {
-    console.log('scrolled!!');
-    this.limit = this.limit+5;
+    this.limit = this.limit + 5;
     this.filesService.getMoreFiles(this.limit, this.to);
   }
 
+  delete(url: string) {
+    this.filesService.delFiles(url);
+  }
+
+  verifyAdminRole() {
+    this.usersService.getSearchUser(this.decoded.uid!);
+    console.log(this.actualUser);
+
+    if (this.actualUser.uid == this.decoded.uid) {
+      this.validatedUser = true;
+    } else {
+      this.validatedUser = false;
+    }
+  }
 }
 

@@ -19,8 +19,12 @@ export class UsersService {
   token: string = localStorage.getItem('auth_token')!;
   decoded: Users = jwt_decode(this.token);
 
+  limit: number = 20;
+  from: number = 0;
+
+
   constructor(private http: HttpClient, private router: Router) {
-    this.getAllUsers();
+    this.getUsers();
   }
 
   actualUser: Users[] = [{
@@ -32,15 +36,22 @@ export class UsersService {
     this.router.navigate([navPath]);
   }
 
-  getAllUsers() {
-    this.http.get(this.apiGetAll)
+  getMoreUsers(limit: number, from: number) {
+    this.http.get(this.apiGetAll + '?limit=' + limit + '&from=' + from)
+      .subscribe((resp: any) => {
+        this.usersArray = resp.users
+      });
+  }
+
+  getUsers() {
+    this.http.get(this.apiGetAll + '?limit=' + this.limit + '&from=' + this.from)
       .subscribe((resp: any) => {
         this.usersArray = resp.users;
       });
 
   }
 
-  deleteUser(user: Users){
+  deleteUser(user: Users) {
     this.http.delete(`https://www.manmanesp.com/api/users/${user.uid}`)
       .subscribe((resp: any) => {
       });
@@ -53,7 +64,7 @@ export class UsersService {
   }
 
   postUser(user: Users) {
-    this.http.post(this.apiPost, user, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+    this.http.post(this.apiPost, user)
       .subscribe((resp: any) => {
       });
   }

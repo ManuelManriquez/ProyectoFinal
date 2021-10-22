@@ -13,8 +13,6 @@ export class LogInComponent {
   email = '';
   password = '';
 
-  login: boolean = true;
-
   constructor(public authService: AuthService, private router: Router) {
   }
 

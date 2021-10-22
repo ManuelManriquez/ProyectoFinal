@@ -3,6 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UsersService } from './users.service';
 import { FilesService } from './files.service';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,14 @@ export class AuthService {
   public pathApi: string = 'https://manmanesp.com';
 
   auth = '/api/auth/login';
+  token: string = '';
+
+
+  actualUser: Users = {
+    uid: '',
+    role: '',
+  }
+
 
   constructor(private http: HttpClient, private router: Router, filesService: FilesService) {
   }
@@ -20,6 +29,7 @@ export class AuthService {
   login(email: string, password: string) {
     this.http.post(this.pathApi + this.auth,  { email: email, password: password })
       .subscribe((resp: any) => {
+        this.actualUser = resp.user;    
         localStorage.setItem('auth_token', resp.token);
         this.nav('/galery');
       });
