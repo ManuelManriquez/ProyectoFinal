@@ -1,6 +1,9 @@
-#modalImage {
-height: 70vh;
-  padding-left: 200px;
+.container {
+}
+
+#image{
+  max-height: 720px;
+  max-width: 70vw;
 }
 
 #container {
@@ -9,15 +12,28 @@ height: 70vh;
 }
 
 .leftSide {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .rightSide {
-
 }
 
 #buttonModalImage {
+  position: absolute;
+  top: 60px;
+  right: 70px;
   margin: 0px 10px;
+}
+
+#buttonBar{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 360px) { 
+
 }

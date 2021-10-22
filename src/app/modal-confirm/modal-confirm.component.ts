@@ -23,9 +23,9 @@ export class ModalConfirmComponent {
     this.newUser.uid = this.data.uid;
     this.newUser.role = this.data.role;
     this.newUser.state = false;
-    console.log(this.newUser);
 
     this.usersService.putUser(this.newUser);
+    this.dialogRef.close();
   }
   cancel(): void {
     this.dialogRef.close();

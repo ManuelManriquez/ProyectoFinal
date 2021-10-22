@@ -19,6 +19,8 @@ export class UsersComponent {
   }
 
   constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService) {
+  console.log(this.usersArray);
+  
   }
 
   openAddDialog() {

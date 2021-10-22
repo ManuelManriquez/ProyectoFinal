@@ -1,59 +1,30 @@
-<div class="header">
-  <div class="example-sidenav-content">
-    <button
+<div class="mainContainer">
+  <div class="header">
+    <div class="example-sidenav-content">
+      <button
       id="buttonMenu"
       color="primary"
       type="button"
       mat-button
-      (click)="drawer.toggle(); showFiller = !showFiller"
     >
-      <ng-container *ngIf="!showFiller; else elseTemplate">
-        <img id="imageMenu" src="./assets/icons/menu.png" alt="" />
-      </ng-container>
-      <ng-template #elseTemplate>
-        <img
-          id="imageMenu"
-          src="./assets/icons/menu-alt-left-regular-24.png"
-          alt=""
-        />
-      </ng-template>
+        <img id="imageMenu" src="./assets/icons/info.png" alt="" />
+        
     </button>
-  </div>
-</div>
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
-    <div class="sidebarContainerButtons">
-      <div class="buttonAndText">
-        <button class="sidebarButtons" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/upload.png" alt="" />
-          <span class="spanSidebar">Upload</span>
-        </button>
-      </div>
-      <div class="buttonAndText">
-        <button class="sidebarButtons" (click)="navUsers()" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/settings.png" alt="" />
-          <span class="spanSidebar">Settings</span>
-        </button>
-      </div>
-      <div class="buttonAndText">
-        <button
-          id="logOutSide"
-          class="sidebarButtons"
-          (click)="logOut()"
-          mat-raised-button
-        >
-          <img id="uploadButton" src="./assets/icons/logout.png" alt="" />
-          <span class="spanSidebar">Log out</span>
-        </button>
-      </div>
     </div>
-  </mat-drawer>
+  </div>
+  
+<div>
+
 
   <div class="container">
     <div *ngIf="!showFiller" class="sidebar">
       <button class="sidebarButtonsX" mat-raised-button>
-        <img id="uploadButton" src="./assets/icons/upload.png" (click)="navUpload()" alt="" />
+        <img
+          id="uploadButton"
+          src="./assets/icons/upload.png"
+          (click)="navUpload()"
+          alt=""
+        />
       </button>
       <button id="admin" class="sidebarButtonsX" (click)="navUsers()">
         <img id="adminButton" src="./assets/icons/settings.png" alt="" />
@@ -63,7 +34,42 @@
       </button>
     </div>
 
-    <div class="content">
+    <div class="main">
+      <div class="content">
+        <div class="row">
+          <div class="cards">
+            <div class="card" *ngFor="let item of filesArray; let i; index">
+              <div id="divImages">
+                <div id="divImage">
+                  <img
+                    id="images"
+                    src="{{ filesService.pathApi }}{{ filesService.getFile }}{{
+                      item.fileName
+                    }}"
+                    alt=""
+                    (click)="openImageDialog(item.fileName, item.user, 1)"
+                  />
+                </div>
+                <div id="divText">
+                  <p>{{ item.fileName }}</p>
+                </div>
+                <div>
+                  <a [href]="'https://manmanesp.com/uploads/'+item.fileName" download>Download</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+  </div>
+</div>
+  
+</div>
+
+  <!-- <div class="content">
       <div class="images">
         <span *ngFor="let item of filesArray; let i=index" [ngSwitch]="filesExt[i]">
           <img *ngSwitchCase="'csv'" id="images" (click)="openFileDialog('./assets/icons/csv.png', item.filename, item.user, 0, 'csv')" src="./assets/icons/csv.png" alt="">
@@ -76,9 +82,7 @@
           <img *ngSwitchCase="'pdf'" id="images" (click)="openFileDialog('./assets/icons/pdf.png',item.fileName, item.user, 0, 'pdf')" src="./assets/icons/pdf.png" alt="">
         <p *ngSwitchDefault>
         
-        </p>
+        </p> 
         </span>
       </div>
-    </div>
-  </div>
-</mat-drawer-container>
+    </div> -->

@@ -34,5 +34,6 @@ export class ModalAddUserComponent {
     this.newUser.password = this.txtPassword.nativeElement.value;
     this.newUser.role = this.txtRole.nativeElement.value;
     this.usersService.postUser(this.newUser);
+    this.dialogRef.close();
   }
 }

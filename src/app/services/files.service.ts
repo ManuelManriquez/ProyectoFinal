@@ -14,9 +14,22 @@ export class FilesService {
 
 
   public filesArray: any[] = [];
+  public filesExtArray: any[] = [];
+
+  files: Files=
+    {
+      _id: '',
+      fileName: '',
+    }
 
   constructor(private http: HttpClient, private router: Router) {
     this.getFiles();
+    this.filesExtArray = this.filesArray.map(a => a.fileName);
+    for (let index = 0; index < this.filesExtArray.length; index++) {
+      this.filesExtArray[index] = this.filesExtArray[index].split('.').pop()!;
+    }
+    this.getFiles();
+
    }
 
 
@@ -30,7 +43,6 @@ export class FilesService {
     .subscribe((resp: any) => {
       this.filesArray = resp.files;
     });
-    
   }
 
   delFiles(url: String){

@@ -1,201 +1,100 @@
-<div class="header">
-  <div class="example-sidenav-content">
-    <button
-      id="buttonMenu"
-      color="primary"
-      type="button"
-      mat-button
-      (click)="drawer.toggle(); showFiller = !showFiller"
-    >
-      <ng-container *ngIf="!showFiller; else elseTemplate">
-        <img id="imageMenu" src="./assets/icons/menu.png" alt="" />
-      </ng-container>
-      <ng-template #elseTemplate>
+<div class="mainContainer">
+  <div class="header">
+    <div class="example-sidenav-content">
+      <button
+        id="buttonMenu"
+        color="primary"
+        type="button"
+        mat-button
+      >
+          <img id="imageMenu" src="./assets/icons/info.png" alt="" />
+          
+      </button>
+    </div>
+    <div class="searchUsers">
+      <input id="inputSearch" type="text" #txtSearch />
+      <button id="buttonSearch">
         <img
-          id="imageMenu"
-          src="./assets/icons/menu-alt-left-regular-24.png"
+          src="./assets/icons/search.png"
           alt=""
+          (click)="searchUser()"
+          #txtSearch
         />
-      </ng-template>
-    </button>
+      </button>
+    </div>
   </div>
-  <div class="searchUsers">
-    <input id="inputSearch" type="text" #txtSearch />
-    <button id="buttonSearch">
-      <img
-        src="./assets/icons/search.png"
-        alt=""
-        (click)="searchUser()"
-        #txtSearch
-      />
-    </button>
-  </div>
-</div>
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer id="sidebar" #drawer class="example-sidenav" mode="side">
-    <div class="sidebarContainerButtons">
-      <div class="buttonAndText">
-        <button class="sidebarButtons" mat-raised-button>
-          <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
-          <span class="spanSidebar">Add user</span>
-        </button>
-      </div>
-      <div class="buttonAndText">
-        <button class="sidebarButtons" mat-raised-button (click)="navGalery()">
-          <img id="uploadButton" src="./assets/icons/home.png" alt="" />
-          <span class="spanSidebar">Home</span>
-        </button>
-      </div>
-      <div class="buttonAndText">
+  
+    <div class="container">
+      <div *ngIf="!showFiller" class="sidebar">
         <button
-          id="logOutSide"
-          class="sidebarButtons"
-          (click)="logOut()"
+          class="sidebarButtonsX"
+          (click)="openAddDialog()"
           mat-raised-button
         >
-          <img id="uploadButton" src="./assets/icons/logout.png" alt="" />
-          <span class="spanSidebar">Log out</span>
+          <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
+        </button>
+        <button id="buttonHome" class="sidebarButtonsX" (click)="navGalery()">
+          <img id="imageHome" src="./assets/icons/home.png" alt="" />
+        </button>
+        <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
+          <img id="logoutButton" src="./assets/icons/logout.png" alt="" />
         </button>
       </div>
-    </div>
-  </mat-drawer>
-
-  <div class="container">
-    <div *ngIf="!showFiller" class="sidebar">
-      <button
-        class="sidebarButtonsX"
-        (click)="openAddDialog()"
-        mat-raised-button
-      >
-        <img id="uploadButton" src="./assets/icons/adduser.png" alt="" />
-      </button>
-      <button id="buttonHome" class="sidebarButtonsX" (click)="navGalery()">
-        <img id="imageHome" src="./assets/icons/home.png" alt="" />
-      </button>
-      <button id="logOut" class="sidebarButtonsX" (click)="logOut()">
-        <img id="logoutButton" src="./assets/icons/logout.png" alt="" />
-      </button>
-    </div>
-    <div class="main">
-      <div class="content">
-        <div class="row">
-          <div class="cards">
-            <div class="card" *ngFor="let item of usersArray">
-              <div class="cardHeader">
-                <div id="cardHeader1">
-                  <span [ngSwitch]="item.role">
-                    <p *ngSwitchCase="'ADMIN_ROLE'"><strong>Admin</strong> </p>
-                    <p *ngSwitchCase="'USER_ROLE'"><strong>User</strong> </p>
-                    <p *ngSwitchDefault>Role Not Found</p>
-                    <hr id="hr">
-                  </span>
-                </div>
-                <div>
-                  <div id="cardHeader2">
-                    <button
-                      class="userButtons"
-                      (click)="
-                        openEditDialog(
-                          item.uid,
-                          item.firstName,
-                          item.lastName,
-                          item.email,
-                          item.password,
-                          item.role
-                        )
-                      "
-                    >
-                      <img src="./assets/icons/editar.png" alt="" />
-                    </button>
-                    <button
-                      class="userButtons"
-                      (click)="openConfirmDialog(item.uid, item.role)"
-                    >
-                      <img src="./assets/icons/borrar.png" alt="" />
-                    </button>
+      <div class="main">
+        <div class="content">
+          <div class="row">
+            <div class="cards">
+              <div class="card" *ngFor="let item of usersArray">
+                <div class="cardHeader">
+                  <div id="cardHeader1">
+                    <span [ngSwitch]="item.role">
+                      <p *ngSwitchCase="'ADMIN_ROLE'"><strong>Admin</strong> </p>
+                      <p *ngSwitchCase="'USER_ROLE'"><strong>User</strong> </p>
+                      <p *ngSwitchDefault>Role Not Found</p>
+                      <hr id="hr">
+                    </span>
+                  </div>
+                  <div>
+                    <div id="cardHeader2">
+                      <button
+                        class="userButtons"
+                        (click)="
+                          openEditDialog(
+                            item.uid,
+                            item.firstName,
+                            item.lastName,
+                            item.email,
+                            item.password,
+                            item.role
+                          )
+                        "
+                      >
+                        <img src="./assets/icons/editar.png" alt="" />
+                      </button>
+                      <button
+                        class="userButtons"
+                        (click)="openConfirmDialog(item.uid, item.role)"
+                      >
+                        <img src="./assets/icons/borrar.png" alt="" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="cardInfo">
-                <p><strong>First name:</strong> {{ item.firstName }}</p>
-                <p><strong>Last name:</strong> {{ item.lastName }}</p>
-                <p><strong>Email:</strong> {{ item.email }}</p>
-              </div>
-              <div class="cardModified">
-                <p><strong>Created at:</strong> {{ item.createdAt }}</p>
-                <p><strong>Modified at:</strong> {{ item.updatedAt }}</p>
+                <div class="cardInfo">
+                  <p><strong>First name:</strong> {{ item.firstName }}</p>
+                  <p><strong>Last name:</strong> {{ item.lastName }}</p>
+                  <p><strong>Email:</strong> {{ item.email }}</p>
+                </div>
+                <div class="cardModified">
+                  <p><strong>Created at:</strong> {{ item.createdAt }}</p>
+                  <p><strong>Modified at:</strong> {{ item.updatedAt }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="content" *ngFor="let item of usersArray">
-      <div class="cards">
-        <div>
-          <div id="containerCard">
-            <div class="card">
-              <div id="cardLeft">
-                <div>
-                  <span
-                    ><strong> First Name: </strong> {{ item.firstName }}</span
-                  >
-                </div>
-                <div>
-                  <span> <strong>Last Name: </strong> {{ item.lastName }}</span>
-                </div>
-                <div>
-                  <span> <strong>Email: </strong> {{ item.email }}</span>
-                </div>
-                <div>
-                  <span> <strong>Role: </strong> {{ item.role }}</span>
-                </div>
-                <div>
-                  <span>
-                    <strong>Status: </strong>
-                    <ng-container *ngIf="item.state; else elseTemplate">
-                      Enabled
-                    </ng-container>
-                    <ng-template #elseTemplate> Disabled </ng-template>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <strong>Last Update: </strong> {{ item.updatedAt }}</span
-                  >
-                </div>
-              </div>
-              <div id="cardRight">
-                <button
-                  class="userButtons"
-                  (click)="
-                    openEditDialog(
-                      item.uid,
-                      item.firstName,
-                      item.lastName,
-                      item.email,
-                      item.password,
-                      item.role
-                    )
-                  "
-                >
-                  <img src="./assets/icons/editar.png" alt="" />
-                </button>
-                <button
-                  class="userButtons"
-                  (click)="openConfirmDialog(item.uid, item.role)"
-                >
-                  <img src="./assets/icons/borrar.png" alt="" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="images"></div>
-    </div> -->
-  </div>
-</mat-drawer-container>
+  
+</div>
+

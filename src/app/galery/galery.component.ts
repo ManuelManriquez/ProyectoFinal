@@ -5,6 +5,10 @@ import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { AuthService } from '../services/auth.service';
 import { FilesService } from '../services/files.service';
 import { UsersService } from '../services/users.service';
+import jwt_decode from "jwt-decode";
+import { Users } from '../interfaces/users';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-galery',
@@ -15,28 +19,36 @@ import { UsersService } from '../services/users.service';
 
 export class GaleryComponent {
 
+  token: string = localStorage.getItem('auth_token')!;
+  decoded: Users = jwt_decode(this.token);
+  validated: boolean = false;
+
   get filesArray() {
     return this.filesService.filesArray;
   }
+  get filesExtArray() {
+    return this.filesService.filesExtArray;
+  }
+
+  get usersArray() {
+    return this.usersService.usersArray;
+  }
+
 
   filesExt: any[] = [];
 
+  usersArrayRole: any[] = [];
+
   filesFileName: any[] = []
 
-  files: Files =
-    {
-      _id: '',
-      fileName: '',
-      extension: '',
-    }
-
-  constructor(public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, public filesService: FilesService) {
+  constructor(private http: HttpClient, public dialog: MatDialog, private authService: AuthService, private usersService: UsersService, public filesService: FilesService) {
+    console.log(filesService.getFiles());
     filesService.getFiles;
     this.filesExt = this.filesArray.map(a => a.fileName);
     for (let index = 0; index < this.filesExt.length; index++) {
       this.filesExt[index] = this.filesExt[index].split('.').pop()!;
     }
-    console.log(this.filesArray);
+    console.log(this.filesExt);
     
   }
 

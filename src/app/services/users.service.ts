@@ -3,6 +3,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Users } from '../interfaces/users';
+import jwt_decode from "jwt-decode";
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,17 @@ export class UsersService {
   apiGetSearch = 'https://manmanesp.com/api/search/users/';
   public usersArray: any[] = [];
 
+  token: string = localStorage.getItem('auth_token')!;
+  decoded: Users = jwt_decode(this.token);
+
   constructor(private http: HttpClient, private router: Router) {
     this.getAllUsers();
   }
 
-
+  actualUser: Users[] = [{
+    uid: '',
+    role: ''
+  }]
 
   navUsers(navPath: string): any {
     this.router.navigate([navPath]);
@@ -32,15 +40,15 @@ export class UsersService {
 
   }
 
-  putUser(user: Users) {
-    console.log(user.uid);
+  deleteUser(){
 
+  }
+
+  putUser(user: Users) {
     this.http.put(`https://www.manmanesp.com/api/users/${user.uid}`, user)
       .subscribe((resp: any) => {
       });
   }
-
-
 
   postUser(user: Users) {
     this.http.post(this.apiPost, user, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
@@ -51,7 +59,7 @@ export class UsersService {
   getSearchUser(query: String) {
     this.http.get(this.apiGetSearch + query, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
-        this.usersArray =resp.results;
+        this.usersArray = resp.results;
       });
   }
 }

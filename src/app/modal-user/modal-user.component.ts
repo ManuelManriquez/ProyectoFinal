@@ -34,7 +34,7 @@ export class ModalUserComponent {
     this.newUser.password = this.txtPassword.nativeElement.value;
     this.newUser.role = this.txtRole.nativeElement.value;
     this.usersService.putUser(this.newUser);
-    console.log(this.newUser);
+    this.dialogRef.close();
   }
 
   cancel(){
