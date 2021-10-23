@@ -16,8 +16,8 @@ export class UsersService {
   apiGetSearch = 'https://manmanesp.com/api/search/users/';
   public usersArray: any[] = [];
 
-  // token: string = localStorage.getItem('auth_token')!;
-  // decoded: Users = jwt_decode(this.token);
+  token: string = localStorage.getItem('auth_token')!;
+  decoded: Users = jwt_decode(this.token);
 
   limit: number = 20;
   from: number = 0;
@@ -32,7 +32,13 @@ export class UsersService {
   }]
 
   navUsers(navPath: string): any {
-    this.router.navigate([navPath]);
+    this.http.get(this.apiGetSearch + this.decoded.uid, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+      .subscribe((resp: any) => {
+        this.usersArray = resp.results;
+        this.router.navigate([navPath]);
+      }, (error) => {
+
+      });
   }
 
   getMoreUsers(limit: number, from: number) {
@@ -72,9 +78,8 @@ export class UsersService {
     this.http.get(this.apiGetSearch + query, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
         this.usersArray = resp.results;
-      },(error)=>{
-        console.log('asdasd');
-        
+      }, (error) => {
+
       });
   }
 }

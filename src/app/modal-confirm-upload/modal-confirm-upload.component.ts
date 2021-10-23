@@ -16,6 +16,5 @@ export class ModalConfirmUploadComponent implements OnInit {
 
   confirm(): void {
     this.dialogRef.close();
-    window.location.reload();
   }
 }

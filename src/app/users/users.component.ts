@@ -63,9 +63,7 @@ export class UsersComponent {
   }
   onScroll() {
     this.limit = this.limit + 10;
-    this.usersService.getMoreUsers(this.limit, this.to);
-    console.log('scrolled');
-    
+    this.usersService.getMoreUsers(this.limit, this.to);    
   }
 
   showFiller = false;
