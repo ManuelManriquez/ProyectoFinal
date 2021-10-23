@@ -32,13 +32,18 @@ export class UsersService {
   }]
 
   navUsers(navPath: string): any {
-    this.http.get(this.apiGetSearch + this.decoded.uid, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
-      .subscribe((resp: any) => {
-        this.usersArray = resp.results;
-        this.router.navigate([navPath]);
-      }, (error) => {
+    if (navPath == '/users') {
+      this.http.get(this.apiGetSearch + this.decoded.uid, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
+        .subscribe((resp: any) => {
+          this.usersArray = resp.results;
+          this.router.navigate([navPath]);
+        }, (error) => {
 
-      });
+        });
+    } else {
+      this.router.navigate([navPath]);
+    }
+
   }
 
   getMoreUsers(limit: number, from: number) {
