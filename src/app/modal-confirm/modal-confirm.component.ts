@@ -27,7 +27,6 @@ export class ModalConfirmComponent {
     this.usersService.deleteUser(this.newUser);
     this.usersService.putUser(this.newUser);
     this.dialogRef.close();
-    window.location.reload();
   }
   cancel(): void {
     this.dialogRef.close();
