@@ -16,12 +16,11 @@ export class UsersService {
   apiGetSearch = 'https://manmanesp.com/api/search/users/';
   public usersArray: any[] = [];
 
-  token: string = localStorage.getItem('auth_token')!;
-  decoded: Users = jwt_decode(this.token);
+  // token: string = localStorage.getItem('auth_token')!;
+  // decoded: Users = jwt_decode(this.token);
 
   limit: number = 20;
   from: number = 0;
-
 
   constructor(private http: HttpClient, private router: Router) {
     this.getUsers();
@@ -64,7 +63,7 @@ export class UsersService {
   }
 
   postUser(user: Users) {
-    this.http.post(this.apiPost, user)
+    this.http.post(this.apiPost, user, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
       });
   }
@@ -73,6 +72,9 @@ export class UsersService {
     this.http.get(this.apiGetSearch + query, { headers: { 'x-token': localStorage.getItem('auth_token')?.toString()! } })
       .subscribe((resp: any) => {
         this.usersArray = resp.results;
+      },(error)=>{
+        console.log('asdasd');
+        
       });
   }
 }

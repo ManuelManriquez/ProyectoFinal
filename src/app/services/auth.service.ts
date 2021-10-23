@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsersService } from './users.service';
 import { FilesService } from './files.service';
 import { Users } from '../interfaces/users';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class AuthService {
 
   public pathApi: string = 'https://manmanesp.com';
 
+  // authToken: string = localStorage.getItem('auth_token')!;
+  // decoded: Users = jwt_decode(this.authToken);
+  
   auth = '/api/auth/login';
   token: string = '';
 
@@ -23,7 +27,8 @@ export class AuthService {
   }
 
 
-  constructor(private http: HttpClient, private router: Router, filesService: FilesService) {
+  constructor(private http: HttpClient, private router: Router, filesService: FilesService, private usersService: UsersService) {
+    // this.actualUser.uid = this.decoded.uid;
   }
 
   login(email: string, password: string) {

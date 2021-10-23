@@ -1,13 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Files } from '../interfaces/files';
 import { ModalImageComponent } from '../modal-image/modal-image.component';
 import { AuthService } from '../services/auth.service';
 import { FilesService } from '../services/files.service';
 import { UsersService } from '../services/users.service';
 import jwt_decode from "jwt-decode";
 import { Users } from '../interfaces/users';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -20,8 +19,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 export class GaleryComponent {
 
-  token: string = localStorage.getItem('auth_token')!;
-  decoded: Users = jwt_decode(this.token);
+  // token: string = localStorage.getItem('auth_token')!;
+  // decoded: Users = jwt_decode(this.token);
   validated: boolean = false;
   validatedUser: boolean = false;
 
@@ -74,14 +73,7 @@ export class GaleryComponent {
   }
 
   verifyAdminRole() {
-    this.usersService.getSearchUser(this.decoded.uid!);
-    console.log(this.actualUser);
 
-    if (this.actualUser.uid == this.decoded.uid) {
-      this.validatedUser = true;
-    } else {
-      this.validatedUser = false;
-    }
   }
 }
 

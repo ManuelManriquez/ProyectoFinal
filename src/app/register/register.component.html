@@ -4,13 +4,13 @@
             <span id="logInTitle">Final Project</span>
             <span id="logIn2">Sign Up</span>
             <span id="logInEmail">First Name</span>
-            <input type="" placeholder="First Name" id="logInInputEmail" [(ngModel)]="firstName" txtFirstName>
+            <input type="" placeholder="First Name" id="logInInputEmail" #txtFirstNameR>
             <span id="logInEmail">Last Name</span>
-            <input type="email" placeholder="Last Name" id="logInInputEmail" [(ngModel)]="lastName" txtLasttName>
+            <input type="email" placeholder="Last Name" id="logInInputEmail" [(ngModel)]="lastName" #txtLastNameR>
             <span id="logInEmail">Email</span>
-            <input type="email" placeholder="Email" id="logInInputEmail" [(ngModel)]="email" txtEmailName>
+            <input type="email" placeholder="Email" id="logInInputEmail" [(ngModel)]="email" #txtEmailR>
             <span id="logInPassword">Password</span>
-            <input type="password" placeholder="Password" id="logInInputPassword" [(ngModel)]="password" txtPasswordName>
+            <input type="password" placeholder="Password" id="logInInputPassword" [(ngModel)]="password" #txtPasswordR>
             <div id="logInBottomButtons">
                 <button id="buttonSignUp" (click)="navLogIn()">Log In</button>
                 <button id="buttonLogIn" (click)="register()">Register</button>

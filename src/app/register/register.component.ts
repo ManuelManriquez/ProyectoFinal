@@ -11,11 +11,10 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild('txtFirstName') txtFirstName!: ElementRef<HTMLInputElement>;
-  @ViewChild('txtLastName') txtLastName!: ElementRef<HTMLInputElement>;
-  @ViewChild('txtEmail') txtEmail!: ElementRef<HTMLInputElement>;
-  @ViewChild('txtPassword') txtPassword!: ElementRef<HTMLInputElement>;
-  @ViewChild('txtRole') txtRole!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtFirstNameR') txtFirstNameR!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtLastNameR') txtLastNameR!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtEmailR') txtEmailR!: ElementRef<HTMLInputElement>;
+  @ViewChild('txtPasswordR') txtPasswordR!: ElementRef<HTMLInputElement>;
 
   apiPost = 'https://www.manmanesp.com/api/users/'
   constructor(private router: Router, private http: HttpClient) { }
@@ -30,10 +29,10 @@ export class RegisterComponent implements OnInit {
   password = '';
 
   newUser: Users = {
-    firstName: this.firstName,
-    lastName: this.lastName,
-    email: this.email,
-    role: 'USER_ROLE',
+    firstName: '',
+    lastName: '',
+    email: '',
+    role: '',
   };
 
 
@@ -42,17 +41,17 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.newUser.firstName = this.txtFirstName.nativeElement.value;
-    this.newUser.lastName = this.txtLastName.nativeElement.value;
-    this.newUser.email = this.txtEmail.nativeElement.value;
-    this.newUser.password = this.txtPassword.nativeElement.value;
-    this.newUser.role = this.txtRole.nativeElement.value;
+    this.newUser.firstName = this.txtFirstNameR.nativeElement.value;
+    this.newUser.lastName = this.txtLastNameR.nativeElement.value;
+    this.newUser.email = this.txtEmailR.nativeElement.value;
+    this.newUser.password = this.txtPasswordR.nativeElement.value;
+    this.newUser.role = 'USER_ROLE';
     console.log(this.newUser);
     this.http.post(this.apiPost, this.newUser)
-    .subscribe((resp: any) => {
-      console.log(resp);
-      
-    });
+      .subscribe((resp: any) => {
+        console.log(resp);
+
+      });
 
     this.router.navigate(['login']);
   }
